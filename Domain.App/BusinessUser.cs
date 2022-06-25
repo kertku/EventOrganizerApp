@@ -1,8 +1,9 @@
 using System.ComponentModel.DataAnnotations;
+using Domain.Base;
 
 namespace Domain.App;
 
-public class BusinessUser
+public class BusinessUser:DomainEntityId<Guid>
 {
     [StringLength(64,MinimumLength = 2)]
     public string CompanyName { get; set; } = default!;
