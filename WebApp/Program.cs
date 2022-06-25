@@ -1,4 +1,14 @@
+using DAL.App.EF;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
+
+var connectionString = builder.Configuration.GetConnectionString("MsSQL");
+builder.Services.AddDbContext<AppDbContext>(options =>
+    options.UseSqlServer(
+            connectionString)
+        .EnableDetailedErrors()
+        .EnableSensitiveDataLogging());
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
