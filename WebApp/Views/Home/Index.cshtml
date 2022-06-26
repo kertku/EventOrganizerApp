@@ -1,8 +1,57 @@
-﻿@{
+﻿@model IEnumerable<Domain.App.Event>
+@{ int futureCounter = 1; }
+@{ int pastCounter = 1; }
+
+@{
     ViewData["Title"] = "Home Page";
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <div class="row">
+        <div class="col col-blue">Miski text siin! </div>
+        <div class="col" >
+            <img src="images/pilt.jpg" alt="Sample Photo"/>
+        </div>
+        <div class="w-100 mt-5"></div>
+        <div class="col">
+
+
+            <table class="table">
+                <tbody>
+                @foreach (var item in Model!)
+                {
+                    @if (item.Date > DateTime.UtcNow)
+                    {
+                        <tr>
+                            <th scope="row">@futureCounter</th>
+                            <td>@Html.DisplayFor(modelItem => item.Name)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Date)</td>
+                            <td>Add users</td>
+                        </tr>
+                        futureCounter++;
+                    }
+                }
+                </tbody>
+            </table>
+        </div>
+        <div class="col">
+            <table class="table">
+                <tbody>
+                @foreach (var item in Model!)
+                {
+                    @if (item.Date < DateTime.UtcNow)
+                    {
+                        <tr>
+                            <th scope="row">@pastCounter</th>
+                            <td>@Html.DisplayFor(modelItem => item.Name)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Date)</td>
+                            <td>Add users</td>
+                        </tr>
+                        pastCounter++;
+                    }
+                }
+                </tbody>
+            </table>
+        </div>
+    </div>
 </div>

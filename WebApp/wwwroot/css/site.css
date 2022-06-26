@@ -16,3 +16,9 @@ html {
 body {
     margin-bottom: 60px;
 }
+
+
+.col-blue {
+    background-color: #0041C2;
+    color: white
+}

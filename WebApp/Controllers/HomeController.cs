@@ -1,5 +1,7 @@
 ﻿using System.Diagnostics;
+using DAL.App.EF;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using WebApp.Models;
 
 namespace WebApp.Controllers;
@@ -7,15 +9,17 @@ namespace WebApp.Controllers;
 public class HomeController : Controller
 {
     private readonly ILogger<HomeController> _logger;
+    private readonly AppDbContext _ctx;
 
-    public HomeController(ILogger<HomeController> logger)
+    public HomeController(ILogger<HomeController> logger, AppDbContext ctx)
     {
         _logger = logger;
+        _ctx = ctx;
     }
 
-    public IActionResult Index()
+    public async Task<IActionResult> Index()
     {
-        return View();
+        return View(await _ctx.Events.ToListAsync());
     }
 
     public IActionResult Privacy()
