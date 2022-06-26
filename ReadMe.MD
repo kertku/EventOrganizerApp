@@ -37,18 +37,12 @@ API Controllers
 run in WebApp folder
 
 ```BASH
- dotnet aspnet-codegenerator controller -name ImagesController              -actions -m Image                       -dc AppDbContext -outDir Controllers --useDefaultLayout --useAsyncActions --referenceScriptLibraries -f
- dotnet aspnet-codegenerator controller -name ImageTypesController          -actions -m ImageType                   -dc AppDbContext -outDir Controllers --useDefaultLayout --useAsyncActions --referenceScriptLibraries -f
- dotnet aspnet-codegenerator controller -name PartsController               -actions -m Part                        -dc AppDbContext -outDir Controllers --useDefaultLayout --useAsyncActions --referenceScriptLibraries -f
- dotnet aspnet-codegenerator controller -name PartInPartsStocksController   -actions -m PartInPartsStock             -dc AppDbContext -outDir Controllers --useDefaultLayout --useAsyncActions --referenceScriptLibraries -f
- dotnet aspnet-codegenerator controller -name PartManufacturersController   -actions -m PartManufacturer            -dc AppDbContext -outDir Controllers --useDefaultLayout --useAsyncActions --referenceScriptLibraries -f
- dotnet aspnet-codegenerator controller -name PartsStocksController         -actions -m PartsStock                   -dc AppDbContext -outDir Controllers --useDefaultLayout --useAsyncActions --referenceScriptLibraries -f
- dotnet aspnet-codegenerator controller -name ProductionLinesController     -actions -m ProductionLine              -dc AppDbContext -outDir Controllers --useDefaultLayout --useAsyncActions --referenceScriptLibraries -f
- dotnet aspnet-codegenerator controller -name ProductionLineSectionsController -actions -m ProductionLineSection         -dc AppDbContext -outDir Controllers --useDefaultLayout --useAsyncActions --referenceScriptLibraries -f
- dotnet aspnet-codegenerator controller -name UserAssignedToWorkOrdersController -actions -m UserAssignedToWorkOrder         -dc AppDbContext -outDir Controllers --useDefaultLayout --useAsyncActions --referenceScriptLibraries -f
- dotnet aspnet-codegenerator controller -name WorkAssignments              -actions -m WorkAssignment             -dc AppDbContext -outDir Controllers --useDefaultLayout --useAsyncActions --referenceScriptLibraries -f
- dotnet aspnet-codegenerator controller -name WorkRequests                  -actions -m WorkRequest                 -dc AppDbContext -outDir Controllers --useDefaultLayout --useAsyncActions --referenceScriptLibraries -f
-
+ dotnet aspnet-codegenerator controller  -name BusinessUserController    -actions -m Domain.App.BusinessUser                      -dc AppDbContext -outDir Controllers --useDefaultLayout --useAsyncActions --referenceScriptLibraries --project -f --project DAL.App.EF 
+ dotnet aspnet-codegenerator controller -name EventsController         -actions -m App.Domain.Event                   -dc AppDbContext -outDir Controllers --useDefaultLayout --useAsyncActions --referenceScriptLibraries -f
+ dotnet aspnet-codegenerator controller -name IndividualUsersController -actions -m App.Domain.IndividualUser                       -dc AppDbContext -outDir Controllers --useDefaultLayout --useAsyncActions --referenceScriptLibraries -f
+ dotnet aspnet-codegenerator controller -name ParticipationsController  -actions -m App.Domain.Participation             -dc AppDbContext -outDir Controllers --useDefaultLayout --useAsyncActions --referenceScriptLibraries -f
+ dotnet aspnet-codegenerator controller -name PaymenyTypesController   -actions -m App.Domain.PaymentType           -dc AppDbContext -outDir Controllers --useDefaultLayout --useAsyncActions --referenceScriptLibraries -f
+ 
 ```
 
 Scaffold to Areas
