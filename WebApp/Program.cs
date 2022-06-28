@@ -1,4 +1,5 @@
 using Contracts.DAL.App;
+using DAL.App.DTO.MapperProfiles;
 using DAL.App.EF;
 using Microsoft.EntityFrameworkCore;
 
@@ -10,6 +11,11 @@ builder.Services.AddDbContext<AppDbContext>(options =>
             connectionString)
         .EnableDetailedErrors()
         .EnableSensitiveDataLogging());
+
+builder.Services.AddAutoMapper(
+    typeof(AutoMapperProfile));
+
+
 builder.Services.AddScoped<IAppUnitOfWork, AppUnitOfWork>();
 // Add services to the container.
 builder.Services.AddControllersWithViews();

@@ -1,4 +1,5 @@
 ﻿using System.Diagnostics;
+using Contracts.DAL.App;
 using DAL.App.EF;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -9,17 +10,18 @@ namespace WebApp.Controllers;
 public class HomeController : Controller
 {
     private readonly ILogger<HomeController> _logger;
-    private readonly AppDbContext _ctx;
+    private readonly IAppUnitOfWork _uow;
 
-    public HomeController(ILogger<HomeController> logger, AppDbContext ctx)
+    public HomeController(ILogger<HomeController> logger, IAppUnitOfWork uow)
     {
         _logger = logger;
-        _ctx = ctx;
+        _uow = uow;
+      
     }
 
     public async Task<IActionResult> Index()
     {
-        return View(await _ctx.Events.ToListAsync());
+        return View(await _uow.Event.GetAllAsync());
     }
 
     public IActionResult Privacy()
