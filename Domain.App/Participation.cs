@@ -1,9 +1,10 @@
+using Contracts.Domain.Base;
 using Domain.App.Validators;
 using Domain.Base;
 
 namespace Domain.App;
 
-public class Participation : DomainEntityId<Guid>
+public class Participation : DomainEntityId<Guid>, IDomainEntityId
 {
     public Guid PaymentTypeId { get; set; }
     public PaymentType PaymentType { get; set; } = default!; 

@@ -1,9 +1,10 @@
 using System;
+using Contracts.Domain.Base;
 using Domain.Base;
 
 namespace DAL.App.DTO;
 
-public class Participation : DomainEntityId<Guid>
+public class Participation : DomainEntityId<Guid>, IDomainEntityId
 {
     public Guid PaymentTypeId { get; set; }
     public PaymentType PaymentType { get; set; } = default!;

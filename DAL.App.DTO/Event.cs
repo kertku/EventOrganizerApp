@@ -1,12 +1,13 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using Contracts.Domain.Base;
 using Domain.App.Validators;
 using Domain.Base;
 
 namespace DAL.App.DTO;
 
-public class Event : DomainEntityId<Guid>
+public class Event : DomainEntityId<Guid>, IDomainEntityId
 {
     public string Name { get; set; } = default!;
 

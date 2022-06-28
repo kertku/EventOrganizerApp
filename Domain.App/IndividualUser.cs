@@ -1,10 +1,11 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using Contracts.Domain.Base;
 using Domain.Base;
 
 namespace Domain.App;
 
-public class IndividualUser : DomainEntityId<Guid>
+public class IndividualUser : DomainEntityId<Guid>, IDomainEntityId
 {
     [StringLength(64, MinimumLength = 2)] 
     public string FirstName { get; set; } = default!;

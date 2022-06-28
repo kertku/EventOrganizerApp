@@ -1,10 +1,11 @@
 using System.ComponentModel.DataAnnotations;
+using Contracts.Domain.Base;
 using Domain.App.Validators;
 using Domain.Base;
 
 namespace Domain.App;
 
-public class Event : DomainEntityId<Guid>
+public class Event : DomainEntityId<Guid>, IDomainEntityId
 {
     public string Name { get; set; } = default!;
 
