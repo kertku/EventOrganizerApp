@@ -2,6 +2,7 @@ using Contracts.DAL.App;
 using DAL.App.DTO.MapperProfiles;
 using DAL.App.EF;
 using Microsoft.EntityFrameworkCore;
+using WebApp.MapperProfiles;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,7 +14,8 @@ builder.Services.AddDbContext<AppDbContext>(options =>
         .EnableSensitiveDataLogging());
 
 builder.Services.AddAutoMapper(
-    typeof(AutoMapperProfile));
+    typeof(AutoMapperProfile),
+    typeof(AutoMapperProfiles));
 
 
 builder.Services.AddScoped<IAppUnitOfWork, AppUnitOfWork>();

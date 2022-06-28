@@ -1,23 +1,29 @@
+using AutoMapper;
+using Contracts.DAL.App;
 using DAL.App.EF;
 using Domain.App;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using WebApp.Models;
 
 namespace WebApp.Controllers;
 
 public class EventsController : Controller
 {
-    private readonly AppDbContext _ctx;
 
-    public EventsController(AppDbContext ctx)
+    private readonly IAppUnitOfWork _uow;
+    private readonly IMapper _mapper;
+
+    public EventsController( IAppUnitOfWork uow, IMapper mapper)
     {
-        _ctx = ctx;
+        _uow = uow;
+        _mapper = mapper;
     }
 
     public async Task<IActionResult> Index()
     {
-        return View(await _ctx.Events.ToListAsync());
+        return View(await _uow.Event.GetAllAsync());
     }
     
     public async Task<IActionResult> Create()
@@ -31,12 +37,12 @@ public class EventsController : Controller
     // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Create(Event @event)
+    public async Task<IActionResult> Create(DAL.App.DTO.Event @event)
     {
         if (ModelState.IsValid)
         {
-            _ctx.Events.Add(@event);
-            await _ctx.SaveChangesAsync();
+            _uow.Event.Add(@event);
+            await _uow.SaveChangesAsync();
             return RedirectToAction( nameof(Index), "Home");
         }
         return View(@event);

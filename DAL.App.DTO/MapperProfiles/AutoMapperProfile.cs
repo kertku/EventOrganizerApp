@@ -8,7 +8,6 @@ namespace DAL.App.DTO.MapperProfiles
         public AutoMapperProfile()
         {
             CreateMap<BusinessUser, Domain.App.BusinessUser>().ReverseMap();
-
             CreateMap<Event, Domain.App.Event>().ReverseMap();
             CreateMap<IndividualUser, Domain.App.IndividualUser>().ReverseMap();
             CreateMap<Participation, Domain.App.Participation>().ReverseMap();
