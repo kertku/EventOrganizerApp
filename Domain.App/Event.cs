@@ -13,7 +13,9 @@ public class Event : DomainEntityId<Guid>, IDomainEntityId
 
     public string Location { get; set; } = default!;
 
-    [StringLength(5000)] public string Information { get; set; } = default!;
+    [StringLength(5000)] 
+    public string Information { get; set; } = default!;
+
 
     public ICollection<Participation>? Participations { get; set; }
 }
