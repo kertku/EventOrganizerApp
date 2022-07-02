@@ -6,18 +6,17 @@ using WebApp.Models.IndividualUsers;
 
 namespace WebApp.MapperProfiles;
 
-public class AutoMapperProfiles: Profile
+public class AutoMapperProfiles : Profile
 {
     public AutoMapperProfiles()
     {
         CreateMap<EventCreateEditViewModel, Domain.App.Event>().ReverseMap();
-        CreateMap<EventCreateEditViewModel, DAL.App.DTO.Event>().ReverseMap();
-        
-        CreateMap<Event, EventDetailsViewVm>().ForMember(i => i.Participations,
-            opt => opt
-                .MapFrom(p => p.Participations!)).ReverseMap();
-        
-
+        CreateMap<EventCreateEditViewModel, Event>().ReverseMap();
         CreateMap<IndividualUser, IndividualUserViewModel>().ReverseMap();
+
+        CreateMap<Event, EventDetailsViewVm>().ForMember(i => i.Participations,
+                opt => opt
+                    .MapFrom(p => p.Participations!))
+            .ReverseMap();
     }
 }

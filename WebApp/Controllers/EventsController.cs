@@ -56,4 +56,14 @@ public class EventsController : Controller
 
     }
     
+    [HttpPost]
+    [ActionName("Delete")]
+    [ValidateAntiForgeryToken]
+    public async Task<IActionResult> Delete(Guid id)
+    {
+        await _uow.Event.RemoveAsync(id);
+        await _uow.SaveChangesAsync();
+        return RedirectToAction(nameof(Index),controllerName:"Home");
+    }
+    
 }

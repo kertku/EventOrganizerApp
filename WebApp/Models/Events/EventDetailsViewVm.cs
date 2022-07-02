@@ -8,7 +8,7 @@ namespace WebApp.Models.Events;
 
 public class EventDetailsViewVm
 {
-    [DisplayName("Ürituse nimi:")] public string Name { get; set; } = default!;
+    [DisplayName("Ürituse nimi")] public string Name { get; set; } = default!;
 
     [DateHigherOrEqualToToday]
     [DisplayName("Toimumisaeg")]
@@ -17,6 +17,6 @@ public class EventDetailsViewVm
 
     [DisplayName("Koht")] public string Location { get; set; } = default!;
 
-
+    [DisplayName("Osavõtjad")]
     public List<Participation>? Participations { get; set; } = new();
 }
