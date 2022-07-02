@@ -28,7 +28,7 @@
                             <th scope="row">@futureCounter</th>
                             <td>@Html.DisplayFor(modelItem => item.Name)</td>
                             <td>@Html.DisplayFor(modelItem => item.Date)</td>
-                            <td>Add users</td>
+                            <td><a asp-controller="Events" asp-action="EventDetails"  asp-route-id="@item.Id">Osalejad</a> </td>
                         </tr>
                         futureCounter++;
                     }

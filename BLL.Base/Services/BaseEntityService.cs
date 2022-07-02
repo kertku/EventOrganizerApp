@@ -51,9 +51,9 @@ namespace BLL.Base.Services
         }
 
 
-        public async Task<IEnumerable<TBllEntity>> GetAllAsync(TKey? userId = default, bool noTracking = true)
+        public async Task<IEnumerable<TBllEntity>> GetAllOrderedAsync(TKey? userId = default, bool noTracking = true)
         {
-            return (await ServiceRepository.GetAllAsync(userId, noTracking)).Select(entity => Mapper.Map(entity))!;
+            return (await ServiceRepository.GetAllOrderedAsync(userId, noTracking)).Select(entity => Mapper.Map(entity))!;
         }
 
         public async Task<TBllEntity?> FirstOrDefaultAsync(TKey id, TKey? userId = default, bool noTracking = true)

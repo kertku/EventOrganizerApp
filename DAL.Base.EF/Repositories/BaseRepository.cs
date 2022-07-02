@@ -43,7 +43,7 @@ namespace DAL.Base.EF.Repositories
         }
 
 
-        public virtual async Task<IEnumerable<TDalEntity>> GetAllAsync(TKey? userId = default, bool noTracking = true)
+        public virtual async Task<IEnumerable<TDalEntity>> GetAllOrderedAsync(TKey? userId = default, bool noTracking = true)
         {
             var query = CreateQuery(userId, noTracking);
             var resQuery = query.Select(domainEntity => Mapper.Map(domainEntity));

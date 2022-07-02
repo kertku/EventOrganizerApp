@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DAL.App.EF.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20220625200352_InitialDbCreation")]
+    [Migration("20220702162311_InitialDbCreation")]
     partial class InitialDbCreation
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -134,11 +134,16 @@ namespace DAL.App.EF.Migrations
                     b.ToTable("Participations");
                 });
 
-            modelBuilder.Entity("Domain.App.Validators.PaymentType", b =>
+            modelBuilder.Entity("Domain.App.PaymentType", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("PaymentTypeName")
+                        .IsRequired()
+                        .HasMaxLength(32)
+                        .HasColumnType("nvarchar(32)");
 
                     b.HasKey("Id");
 
@@ -161,7 +166,7 @@ namespace DAL.App.EF.Migrations
                         .WithMany("Participations")
                         .HasForeignKey("IndividualUserId");
 
-                    b.HasOne("Domain.App.Validators.PaymentType", "PaymentType")
+                    b.HasOne("Domain.App.PaymentType", "PaymentType")
                         .WithMany("Participations")
                         .HasForeignKey("PaymentTypeId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -191,7 +196,7 @@ namespace DAL.App.EF.Migrations
                     b.Navigation("Participations");
                 });
 
-            modelBuilder.Entity("Domain.App.Validators.PaymentType", b =>
+            modelBuilder.Entity("Domain.App.PaymentType", b =>
                 {
                     b.Navigation("Participations");
                 });

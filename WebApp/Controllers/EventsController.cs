@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using WebApp.Models;
+using WebApp.Models.Events;
 
 namespace WebApp.Controllers;
 
@@ -23,7 +24,7 @@ public class EventsController : Controller
 
     public async Task<IActionResult> Index()
     {
-        return View(await _uow.Event.GetAllAsync());
+        return View(await _uow.Event.GetAllOrderedAsync());
     }
     
     public async Task<IActionResult> Create()
@@ -46,6 +47,13 @@ public class EventsController : Controller
             return RedirectToAction( nameof(Index), "Home");
         }
         return View(@event);
+    }
+    
+    public async Task<IActionResult> EventDetails(Guid id)
+    {
+        var eventWithParticipates = await _uow.Event.GetEventWithParticipatesAsync(id, true);
+        return View(_mapper.Map<EventDetailsViewVm>(eventWithParticipates));
+
     }
     
 }

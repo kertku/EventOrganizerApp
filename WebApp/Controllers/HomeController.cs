@@ -21,7 +21,7 @@ public class HomeController : Controller
 
     public async Task<IActionResult> Index()
     {
-        return View(await _uow.Event.GetAllAsync());
+        return View(await _uow.Event.GetAllOrderedAsync());
     }
 
     public IActionResult Privacy()

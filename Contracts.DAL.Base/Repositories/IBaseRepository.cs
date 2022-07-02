@@ -16,7 +16,7 @@ namespace Contracts.DAL.Base.Repositories
         where TEntity : class, IDomainEntityId<Tkey>
         where Tkey : IEquatable<Tkey> // Must be compareable
     {
-        Task<IEnumerable<TEntity>> GetAllAsync(Tkey? userId = default, bool noTracking = true);
+        Task<IEnumerable<TEntity>> GetAllOrderedAsync(Tkey? userId = default, bool noTracking = true);
         Task<TEntity?> FirstOrDefaultAsync(Tkey id, Tkey? userId = default, bool noTracking = true);
 
         Task<TEntity?> FirstOrDefaultWithoutIncludesAsync(Tkey id, Tkey? userId = default, bool noTracking = true);

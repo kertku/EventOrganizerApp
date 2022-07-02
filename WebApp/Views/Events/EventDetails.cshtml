@@ -1,0 +1,58 @@
+@model WebApp.Models.Events.EventDetailsViewVm
+
+<!DOCTYPE html>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h3>Osavõtjad</h3>
+
+<table class="table table-borderless w-50">
+    <tbody>
+
+    <tr>
+       
+        <td>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <td>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Name)
+            </dd>
+        </td>
+    </tr>
+    <tr>
+           
+        <td>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Date)
+        </dt>
+        <td>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Date)
+            </dd>
+        </td>
+    </tr>
+    <tr>
+           
+        <td>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Location)
+        </dt>
+        <td>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Location)
+            </dd>
+        </td>
+    </tr>
+    
+
+    </tbody>
+</table>
+
+<dl class="row">
+
+
+</dl>
