@@ -22,8 +22,4 @@
       <ProjectReference Include="..\DAL.App.EF\DAL.App.EF.csproj" />
     </ItemGroup>
 
-    <ItemGroup>
-      <Folder Include="Models\Participations" />
-    </ItemGroup>
-
 </Project>

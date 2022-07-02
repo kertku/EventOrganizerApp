@@ -59,48 +59,63 @@
         {
             <div>Ühtegi osavõtjat ei ole registreerunud!</div>
         }
-        <table class="table table-borderless w-75">
+        <table class="table table-borderless">
             <tbody>
             @foreach (var item in Model.Participations!)
             {
-                <tr>
-                    <td>
-                        <dd class="col-sm-10">
-                            @Html.DisplayFor(modelItem => item.IndividualUser!.FullName)
-                        </dd>
-                    </td>
-                    <td>
-                        <dd class="col-sm-10">
-                            @Html.DisplayFor(modelItem => item.IndividualUser!.IdentificationCode)
-                        </dd>
-                    </td>
-                    <td>
-                        <dd class="col-sm-10">
-                            <a asp-controller="Events" asp-action="EventDetails" asp-route-id="@item.Id">Vaata</a>
-                        </dd>
-                    </td>
-                    <td>
-                        <dd class="col-sm-10">
-                            <a asp-controller="Events" asp-action="EventDetails" asp-route-id="@item.Id">Kustuta</a>
-                        </dd>
-                    </td>
+                @if (item.IndividualUser != null)
+                {
+                    <tr>
+                        <td>
+                            <dd class="col-sm-10">
+                                @Html.DisplayFor(modelItem => item.IndividualUser!.FullName)
+                            </dd>
+                        </td>
+                        <td>
+                            <dd class="col-sm-10">
+                                @Html.DisplayFor(modelItem => item.IndividualUser!.IdentificationCode)
+                            </dd>
+                        </td>
+                        <td>
+                            <dd class="col-sm-10">
+                                <a asp-controller="Participations" asp-action="CreateEdit" asp-route-id="@item.Id">Vaata</a>
+                            </dd>
+                        </td>
+                        <td>
+                            <dd class="col-sm-10">
+                                <a asp-controller="Events" asp-action="EventDetails" asp-route-id="@item.Id">Kustuta</a>
+                            </dd>
+                        </td>
 
-                </tr>
+                    </tr>
+                }
             }
             @foreach (var item in Model.Participations!)
             {
-                <tr>
-                    <td>
+                @if (item.BusinessUser != null)
+                {
+                    <tr>
+                        <td>
+                            <dd class="col-sm-10">
+                                @Html.DisplayFor(modelItem => item.BusinessUser!.CompanyName)
+                            </dd>
+                        </td>
+                        <td>
+                            <dd class="col-sm-10">
+                                @Html.DisplayFor(modelItem => item.BusinessUser!.RegistryCode)
+                            </dd>
+                        </td>
+                        <td>
+                            @*<dd class="col-sm-10">
+                                <a asp-controller="Participations" asp-action="CreateEdit" asp-route-id="@item.Id" asp-route-indidualuserId="@item.IndividualUser!.Id">Vaata</a>
+                            </dd>*@
+                        </td>
+                        <td>
                         <dd class="col-sm-10">
-                            @Html.DisplayFor(modelItem => item.BusinessUser!.CompanyName)
+                            <a asp-controller="Events" asp-action="EventDetails" asp-route-id="@item.Id">Kustuta</a>
                         </dd>
-                    </td>
-                    <td>
-                        <dd class="col-sm-10">
-                            @Html.DisplayFor(modelItem => item.BusinessUser!.RegistryCode)
-                        </dd>
-                    </td>
-                </tr>
+                    </tr>
+                }
             }
             </tbody>
         </table>
@@ -114,7 +129,3 @@
 
 
 </dl>
-
-<td>
-    <a asp-controller="Events" asp-action="EventDetails" asp-route-id="@item.Id">Osalejad</a>
-</td>

@@ -29,7 +29,6 @@
                             <td>@Html.DisplayFor(modelItem => item.Name)</td>
                             <td>@Html.DisplayFor(modelItem => item.Date)</td>
                             <td><a asp-controller="Events" asp-action="EventDetails"  asp-route-id="@item.Id">Osalejad</a> </td>
-                            <td><butto asp-controller="Events" asp-action="EventDetails"  asp-route-id="@item.Id">Osalejad</butto> </td>
                             <td><a asp-controller="Events" asp-action="Delete"  asp-route-id="@item.Id"><i class="bi bi-x"></i></a> </td>
                             
                         </tr>
@@ -52,7 +51,8 @@
                             <th scope="row">@pastCounter</th>
                             <td>@Html.DisplayFor(modelItem => item.Name)</td>
                             <td>@Html.DisplayFor(modelItem => item.Date)</td>
-                            <td>Add users</td>
+                            <td><a asp-controller="Events" asp-action="EventDetails"  asp-route-id="@item.Id">Osalejad</a> </td>
+                          
                         </tr>
                         pastCounter++;
                     }
