@@ -1,22 +1,17 @@
 using AutoMapper;
 using Contracts.DAL.App;
-using DAL.App.EF;
-using Domain.App;
+using DAL.App.DTO;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
-using WebApp.Models;
 using WebApp.Models.Events;
 
 namespace WebApp.Controllers;
 
 public class EventsController : Controller
 {
-
-    private readonly IAppUnitOfWork _uow;
     private readonly IMapper _mapper;
+    private readonly IAppUnitOfWork _uow;
 
-    public EventsController( IAppUnitOfWork uow, IMapper mapper)
+    public EventsController(IAppUnitOfWork uow, IMapper mapper)
     {
         _uow = uow;
         _mapper = mapper;
@@ -26,11 +21,10 @@ public class EventsController : Controller
     {
         return View(await _uow.Event.GetAllOrderedAsync());
     }
-    
+
     public async Task<IActionResult> Create()
     {
-  
-        return  View();
+        return View();
     }
 
     // POST: PartInPartsStocks/Create
@@ -38,24 +32,24 @@ public class EventsController : Controller
     // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Create(DAL.App.DTO.Event @event)
+    public async Task<IActionResult> Create(Event @event)
     {
         if (ModelState.IsValid)
         {
             _uow.Event.Add(@event);
             await _uow.SaveChangesAsync();
-            return RedirectToAction( nameof(Index), "Home");
+            return RedirectToAction(nameof(Index), "Home");
         }
+
         return View(@event);
     }
-    
+
     public async Task<IActionResult> EventDetails(Guid id)
     {
         var eventWithParticipates = await _uow.Event.GetEventWithParticipatesAsync(id, true);
         return View(_mapper.Map<EventDetailsViewVm>(eventWithParticipates));
-
     }
-    
+
     [HttpPost]
     [ActionName("Delete")]
     [ValidateAntiForgeryToken]
@@ -63,7 +57,6 @@ public class EventsController : Controller
     {
         await _uow.Event.RemoveAsync(id);
         await _uow.SaveChangesAsync();
-        return RedirectToAction(nameof(Index),controllerName:"Home");
+        return RedirectToAction(nameof(Index), "Home");
     }
-    
 }

@@ -24,13 +24,14 @@ body {
 }
 
 
-.flex-container{
+.flex-container {
     display: flex;
     flex-direction: column;
-    margin:0
+    margin: 0
 }
-.inner-div1{
-    background-color:  #0041C2;
+
+.inner-div1 {
+    background-color: #0041C2;
     height: 50px;
 }
 

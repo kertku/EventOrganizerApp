@@ -1,13 +1,12 @@
 using System;
 using System.Threading.Tasks;
 
-namespace Contracts.DAL.Base
-{
-    public interface IBaseUnitOfWork
-    {
-        Task<int> SaveChangesAsync();
+namespace Contracts.DAL.Base;
 
-        public TRepository GetRepository<TRepository>(Func<TRepository> repoCreationMethod)
-            where TRepository : class;
-    }
+public interface IBaseUnitOfWork
+{
+    Task<int> SaveChangesAsync();
+
+    public TRepository GetRepository<TRepository>(Func<TRepository> repoCreationMethod)
+        where TRepository : class;
 }

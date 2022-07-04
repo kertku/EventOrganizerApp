@@ -19,8 +19,8 @@ public class ParticipationRepository : BaseRepository<Participation, Domain.App.
     }
 
 
-
-    public override async Task<Participation?> FirstOrDefaultAsync(Guid id, Guid userId = default, bool noTracking = true)
+    public override async Task<Participation?> FirstOrDefaultAsync(Guid id, Guid userId = default,
+        bool noTracking = true)
     {
         var query = RepoDbSet.AsQueryable();
         if (noTracking) query = query.AsNoTracking();
@@ -33,4 +33,4 @@ public class ParticipationRepository : BaseRepository<Participation, Domain.App.
         var result = Mapper.Map(await query.FirstOrDefaultAsync(m => m.Id == id));
         return result;
     }
-}    
+}

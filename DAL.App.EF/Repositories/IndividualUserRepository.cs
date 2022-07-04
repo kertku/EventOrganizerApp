@@ -6,7 +6,7 @@ using DAL.Base.EF.Repositories;
 
 namespace DAL.App.EF.Repositories;
 
-public class IndividualUserRepository: BaseRepository<IndividualUser, Domain.App.IndividualUser, AppDbContext>,
+public class IndividualUserRepository : BaseRepository<IndividualUser, Domain.App.IndividualUser, AppDbContext>,
     IIndividualUserRepository
 {
     private readonly IMapper _mapper;

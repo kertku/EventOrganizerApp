@@ -1,13 +1,12 @@
 ﻿using System;
 using System.Threading.Tasks;
 
-namespace Contracts.BLL.Base
-{
-    public interface IBaseBLL
-    {
-        Task<int> SaveChangesAsync();
+namespace Contracts.BLL.Base;
 
-        TService GetService<TService>(Func<TService> serviceCreationMethod)
-            where TService : class;
-    }
+public interface IBaseBLL
+{
+    Task<int> SaveChangesAsync();
+
+    TService GetService<TService>(Func<TService> serviceCreationMethod)
+        where TService : class;
 }

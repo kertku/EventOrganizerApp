@@ -1,8 +1,6 @@
 ﻿using System.Diagnostics;
 using Contracts.DAL.App;
-using DAL.App.EF;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using WebApp.Models;
 
 namespace WebApp.Controllers;
@@ -16,7 +14,6 @@ public class HomeController : Controller
     {
         _logger = logger;
         _uow = uow;
-      
     }
 
     public async Task<IActionResult> Index()

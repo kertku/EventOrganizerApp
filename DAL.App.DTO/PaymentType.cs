@@ -8,7 +8,7 @@ namespace DAL.App.DTO;
 
 public class PaymentType : DomainEntityId<Guid>, IDomainEntityId
 {
-    [StringLength(32, MinimumLength = 2)] 
-    public string PaymentTypeName { get; set; } = default!;
+    [StringLength(32, MinimumLength = 2)] public string PaymentTypeName { get; set; } = default!;
+
     public ICollection<Participation>? Participations { get; set; }
 }

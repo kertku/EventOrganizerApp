@@ -1,6 +1,5 @@
 using System.ComponentModel.DataAnnotations;
 using Contracts.Domain.Base;
-using Domain.App.Validators;
 using Domain.Base;
 
 namespace Domain.App;

@@ -4,10 +4,9 @@
         <TargetFramework>net6.0</TargetFramework>
     </PropertyGroup>
 
-  
 
     <ItemGroup>
-      <ProjectReference Include="..\Contracts.Domain.Base\Contracts.Domain.Base.csproj" />
+        <ProjectReference Include="..\Contracts.Domain.Base\Contracts.Domain.Base.csproj"/>
     </ItemGroup>
 
 </Project>

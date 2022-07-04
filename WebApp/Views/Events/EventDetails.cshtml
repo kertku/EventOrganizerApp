@@ -52,10 +52,8 @@
     </dt>
     <td>
 
-        @{
-            System.Diagnostics.Debug.Assert(Model.Participations != null, "Model.Participations != null");
-        }
-        @if (Model.Participations.Count < 1)
+
+        @if (Model.Participations!.Count < 1)
         {
             <div>Ühtegi osavõtjat ei ole registreerunud!</div>
         }
@@ -123,6 +121,12 @@
 
     </tbody>
 </table>
+<td>
+    <a asp-controller="Participations" asp-action="CreateEdit" asp-route-eventId="@Model.Id">Add Individual user</a>
+</td>
+<td>
+    <a asp-controller="Participations" asp-action="CreateEdit" asp-route-id="@Model.Id">Add Company</a>
+</td>
 
 
 <dl class="row">

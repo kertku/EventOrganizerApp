@@ -1,17 +1,15 @@
 using AutoMapper;
 
+namespace DAL.App.DTO.MapperProfiles;
 
-namespace DAL.App.DTO.MapperProfiles
+public class AutoMapperProfile : Profile
 {
-    public class AutoMapperProfile : Profile
+    public AutoMapperProfile()
     {
-        public AutoMapperProfile()
-        {
-            CreateMap<BusinessUser, Domain.App.BusinessUser>().ReverseMap();
-            CreateMap<Event, Domain.App.Event>().ReverseMap();
-            CreateMap<IndividualUser, Domain.App.IndividualUser>().ReverseMap();
-            CreateMap<Participation, Domain.App.Participation>().ReverseMap();
-            CreateMap<PaymentType, Domain.App.PaymentType>().ReverseMap();
-        }
+        CreateMap<BusinessUser, Domain.App.BusinessUser>().ReverseMap();
+        CreateMap<Event, Domain.App.Event>().ReverseMap();
+        CreateMap<IndividualUser, Domain.App.IndividualUser>().ReverseMap();
+        CreateMap<Participation, Domain.App.Participation>().ReverseMap();
+        CreateMap<PaymentType, Domain.App.PaymentType>().ReverseMap();
     }
 }

@@ -42,16 +42,16 @@ public class EventRepository : BaseRepository<Event, Domain.App.Event, AppDbCont
         return result!;
     }
 
-    public async Task<Event> GetEventWithParticipatesAsync(Guid id,bool noTracking)
+    public async Task<Event> GetEventWithParticipatesAsync(Guid id, bool noTracking)
     {
         var query = RepoDbSet.AsQueryable();
         if (noTracking) query = query.AsNoTracking();
-       query = query.Include(p => p.Participations)!
-            .ThenInclude(i => i.IndividualUser)
-            .Include(p => p.Participations)!
-            .ThenInclude(b => b.BusinessUser)
+        query = query.Include(p => p.Participations)!
+                .ThenInclude(i => i.IndividualUser)
+                .Include(p => p.Participations)!
+                .ThenInclude(b => b.BusinessUser)
             ;
-        var result = Mapper.Map(await query.FirstOrDefaultAsync(e=>e.Id == id) );
+        var result = Mapper.Map(await query.FirstOrDefaultAsync(e => e.Id == id));
         return result!;
     }
 

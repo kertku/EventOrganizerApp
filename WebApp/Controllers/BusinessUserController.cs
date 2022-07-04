@@ -4,10 +4,10 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace WebApp.Controllers;
 
-public class BusinessUserController: Controller
+public class BusinessUserController : Controller
 {
-    private readonly IAppUnitOfWork _uow;
     private readonly IMapper _mapper;
+    private readonly IAppUnitOfWork _uow;
 
     public BusinessUserController(IAppUnitOfWork uow, IMapper mapper)
     {

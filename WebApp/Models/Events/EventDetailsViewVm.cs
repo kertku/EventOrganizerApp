@@ -1,13 +1,15 @@
-using System.Collections;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using DAL.App.DTO;
 using Domain.App.Validators;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace WebApp.Models.Events;
 
 public class EventDetailsViewVm
 {
+    public Guid Id { get; set; }
+
     [DisplayName("Ürituse nimi")] public string Name { get; set; } = default!;
 
     [DateHigherOrEqualToToday]
@@ -16,7 +18,9 @@ public class EventDetailsViewVm
     public DateTime Date { get; set; }
 
     [DisplayName("Koht")] public string Location { get; set; } = default!;
+    public SelectList? PaymentTypeSelectList { get; set; }
 
-    [DisplayName("Osavõtjad")]
-    public List<Participation>? Participations { get; set; } = new();
+    public Participation Participation { get; set; }
+
+    [DisplayName("Osavõtjad")] public List<Participation>? Participations { get; set; } = new();
 }
