@@ -8,9 +8,11 @@ namespace DAL.App.DTO;
 
 public class Participation : DomainEntityId<Guid>, IDomainEntityId
 {
+    
+   
     [DisplayName("Informatsioon")]
     [StringLength(5000)]
-    public string? Information { get; set; }
+    public string Information { get; set; } = default!;
 
     [DisplayName("Maksetüüp")] public Guid PaymentTypeId { get; set; }
 

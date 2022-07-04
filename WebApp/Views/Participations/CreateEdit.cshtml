@@ -4,19 +4,19 @@
 <div class="container">
     <form asp-action="CreateEdit">
         <div class="form-group">
-            <label asp-for="Participation!.IndividualUser!.FirstName" class="control-label"></label>
-            <input asp-for="Participation!.IndividualUser!.FirstName" class="form-control"/>
-            <span asp-validation-for="Participation!.IndividualUser!.FirstName" class="text-danger"></span>
+            <label asp-for="IndividualUser!.FirstName" class="control-label"></label>
+            <input asp-for="IndividualUser!.FirstName" class="form-control"/>
+            <span asp-validation-for="IndividualUser!.FirstName" class="text-danger"></span>
         </div>
         <div class="form-group">
-            <label asp-for="Participation!.IndividualUser!.LastName" class="control-label"></label>
-            <input asp-for="Participation!.IndividualUser!.LastName" class="form-control"/>
-            <span asp-validation-for="Participation!.IndividualUser!.LastName" class="text-danger"></span>
+            <label asp-for="IndividualUser!.LastName" class="control-label"></label>
+            <input asp-for="IndividualUser!.LastName" class="form-control"/>
+            <span asp-validation-for="IndividualUser!.LastName" class="text-danger"></span>
         </div>
         <div class="form-group">
-            <label asp-for="Participation!.IndividualUser!.IdentificationCode" class="control-label"></label>
-            <input asp-for="Participation!.IndividualUser!.IdentificationCode" class="form-control"/>
-            <span asp-validation-for="Participation!.IndividualUser!.IdentificationCode" class="text-danger"></span>
+            <label asp-for="IndividualUser!.IdentificationCode" class="control-label"></label>
+            <input asp-for="IndividualUser!.IdentificationCode" class="form-control"/>
+            <span asp-validation-for="IndividualUser!.IdentificationCode" class="text-danger"></span>
         </div>
         <div class="form-group">
             <label asp-for="Participation!.PaymentTypeId" class="control-label"></label>
@@ -28,9 +28,8 @@
             <textarea rows="7" asp-for="Participation!.Information" class="form-control"></textarea>
             <span asp-validation-for="Participation!.Information" class="text-danger"></span>
         </div>
-
+        <input type="hidden" asp-for="EventId"/>
         <input type="hidden" asp-for="Participation!.Id"/>
-        <input type="hidden" asp-for="Participation!.EventId"/>
         <div class="form-group">
             <input type="submit" value="Create" class="btn btn-primary"/>
         </div>

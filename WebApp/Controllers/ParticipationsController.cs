@@ -19,20 +19,20 @@ public class ParticipationsController : Controller
     }
 
     //GET
-    public async Task<IActionResult> CreateEdit(Guid? id, [FromQuery] string eventId)
+    public async Task<IActionResult> CreateEdit(Guid? id, [FromQuery] string? eventId, [FromQuery] string? user)
     {
         var vm = new ParticipationCreateEditVm();
         vm.Participation = new Participation();
-
-
-        var eventObj = _uow.Event.FirstOrDefaultAsync(Guid.Parse(eventId));
-        vm.Participation.Event = await eventObj;
+        vm.IndividualUser = new IndividualUser();
+        if (eventId != null) vm.EventId = Guid.Parse(eventId);
         vm.PaymentTypeSelectList = new SelectList(await _uow.PaymentType.GetAllOrderedAsync(), "Id",
             "PaymentTypeName", vm.Participation?.PaymentTypeId);
 
         if (id == null) return View(vm);
 
         vm.Participation = await _uow.Participation.FirstOrDefaultAsync(id.Value);
+        if (eventId != null) vm.Participation!.EventId = Guid.Parse(eventId);
+        if (user != null) vm.IndividualUser = await _uow.IndividualUser.FirstOrDefaultAsync(Guid.Parse(user));
         if (vm.Participation == null) return NotFound();
 
         return View(vm);
@@ -49,7 +49,9 @@ public class ParticipationsController : Controller
         {
             if (ModelState.IsValid)
             {
-                _uow.IndividualUser.Add(vm.Participation.IndividualUser!);
+                var user = _uow.IndividualUser.Add(vm.IndividualUser!);
+                vm.Participation.EventId = vm.EventId;
+                vm.Participation.IndividualUserId = user.Id;
                 _uow.Participation.Add(vm.Participation);
                 await _uow.SaveChangesAsync();
                 return RedirectToAction(nameof(Index), "Home");
@@ -57,10 +59,15 @@ public class ParticipationsController : Controller
         }
         else
         {
-            _uow.IndividualUser.Update(vm.Participation.IndividualUser!);
-            _uow.Participation.Update(vm.Participation);
-            await _uow.SaveChangesAsync();
-            return RedirectToAction("EventDetails", "Events", new { vm.Participation.Event!.Id });
+            if (ModelState.IsValid)
+            {
+                var user = _uow.IndividualUser.Update(vm.IndividualUser!);
+                vm.Participation.EventId = vm.EventId;
+                vm.Participation.IndividualUserId = user.Id;
+                _uow.Participation.Update(vm.Participation);
+                await _uow.SaveChangesAsync();
+                return RedirectToAction("EventDetails", "Events", new { id = vm.Participation.EventId });
+            }
         }
 
         vm.PaymentTypeSelectList = new SelectList(await _uow.PaymentType.GetAllOrderedAsync(), "Id",

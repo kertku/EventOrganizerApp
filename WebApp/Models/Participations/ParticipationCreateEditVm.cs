@@ -5,6 +5,8 @@ namespace WebApp.Models.Participations;
 
 public class ParticipationCreateEditVm
 {
+    public Guid EventId { get; set; }
     public Participation? Participation { get; set; }
     public SelectList? PaymentTypeSelectList { get; set; }
+    public IndividualUser? IndividualUser { get; set; } 
 }

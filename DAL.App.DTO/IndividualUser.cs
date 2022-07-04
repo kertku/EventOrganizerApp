@@ -18,8 +18,8 @@ public class IndividualUser : DomainEntityId<Guid>, IDomainEntityId
     [StringLength(64, MinimumLength = 2)]
     public string LastName { get; set; } = default!;
 
-    public long IdentificationCode { get; set; } = default!;
-    [StringLength(1500)] public string Information { get; set; } = default!;
+    public long IdentificationCode { get; set; } 
+    [StringLength(1500)] public string Information { get; set; } = " ";
 
     public ICollection<Participation>? Participations { get; set; }
 
