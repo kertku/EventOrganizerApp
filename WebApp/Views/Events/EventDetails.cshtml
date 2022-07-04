@@ -105,7 +105,7 @@
                         </td>
                         <td>
                         <dd class="col-sm-10">
-                            <a asp-controller="Participations" asp-action="CreateEdit" asp-route-id="@item.Id" asp-route-user="@item.BusinessUser.Id" asp-route-eventId="@Model.Id">Vaata</a>
+                            <a asp-controller="Participations" asp-action="CreateEdit" asp-route-id="@item.Id" asp-route-user="@item.BusinessUser.Id" asp-route-eventId="@Model.Id" asp-route-bu="true">Vaata</a>
                         </dd>
                         <td>
                         <dd class="col-sm-10">
@@ -124,7 +124,7 @@
     <a asp-controller="Participations" asp-action="CreateEdit" asp-route-eventId="@Model.Id">Add Individual user</a>
 </td>
 <td>
-    <a asp-controller="Participations" asp-action="CreateEdit" asp-route-id="@Model.Id">Add Company</a>
+    <a asp-controller="Participations" asp-action="CreateEdit" asp-route-eventId="@Model.Id" asp-route-bu="true">Add Company</a>
 </td>
 
 

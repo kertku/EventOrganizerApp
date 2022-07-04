@@ -19,20 +19,34 @@ public class ParticipationsController : Controller
     }
 
     //GET
-    public async Task<IActionResult> CreateEdit(Guid? id, [FromQuery] string? eventId, [FromQuery] string? user)
+    public async Task<IActionResult> CreateEdit(Guid? id, [FromQuery] string? eventId, [FromQuery] string? user,
+        [FromQuery] string? bu)
+
     {
         var vm = new ParticipationCreateEditVm();
         vm.Participation = new Participation();
-        vm.IndividualUser = new IndividualUser();
+        vm.IsBusinessUser = bu != null && bool.Parse(bu);
         if (eventId != null) vm.EventId = Guid.Parse(eventId);
         vm.PaymentTypeSelectList = new SelectList(await _uow.PaymentType.GetAllOrderedAsync(), "Id",
             "PaymentTypeName", vm.Participation?.PaymentTypeId);
+        if (bu != null && bool.Parse(bu))
+            vm.BusinessUser = new BusinessUser();
+        else
+            vm.IndividualUser = new IndividualUser();
 
         if (id == null) return View(vm);
 
         vm.Participation = await _uow.Participation.FirstOrDefaultAsync(id.Value);
         if (eventId != null) vm.Participation!.EventId = Guid.Parse(eventId);
-        if (user != null) vm.IndividualUser = await _uow.IndividualUser.FirstOrDefaultAsync(Guid.Parse(user));
+        if (bu != null && bool.Parse(bu))
+        {
+            if (user != null) vm.BusinessUser = await _uow.BusinessUser.FirstOrDefaultAsync(Guid.Parse(user));
+        }
+        else
+        {
+            if (user != null) vm.IndividualUser = await _uow.IndividualUser.FirstOrDefaultAsync(Guid.Parse(user));
+        }
+
         if (vm.Participation == null) return NotFound();
 
         return View(vm);
@@ -49,9 +63,19 @@ public class ParticipationsController : Controller
         {
             if (ModelState.IsValid)
             {
-                var user = _uow.IndividualUser.Add(vm.IndividualUser!);
                 vm.Participation.EventId = vm.EventId;
-                vm.Participation.IndividualUserId = user.Id;
+                if (vm.IndividualUser != null && vm.IndividualUser.Id == Guid.Empty)
+                {
+                    var user = _uow.IndividualUser.Add(vm.IndividualUser!);
+                    vm.Participation.IndividualUserId = user.Id;
+                }
+
+                if (vm.BusinessUser != null && vm.BusinessUser.Id == Guid.Empty)
+                {
+                    var user = _uow.BusinessUser.Add(vm.BusinessUser!);
+                    vm.Participation.BusinessUserId = user.Id;
+                }
+
                 _uow.Participation.Add(vm.Participation);
                 await _uow.SaveChangesAsync();
                 return RedirectToAction(nameof(Index), "Home");
@@ -61,9 +85,19 @@ public class ParticipationsController : Controller
         {
             if (ModelState.IsValid)
             {
-                var user = _uow.IndividualUser.Update(vm.IndividualUser!);
                 vm.Participation.EventId = vm.EventId;
-                vm.Participation.IndividualUserId = user.Id;
+                if (vm.IndividualUser != null && vm.IndividualUser.Id == Guid.Empty)
+                {
+                    var user = _uow.IndividualUser.Update(vm.IndividualUser!);
+                    vm.Participation.IndividualUserId = user.Id;
+                }
+
+                if (vm.BusinessUser != null && vm.BusinessUser.Id == Guid.Empty)
+                {
+                    var user = _uow.BusinessUser.Update(vm.BusinessUser!);
+                    vm.Participation.BusinessUserId = user.Id;
+                }
+
                 _uow.Participation.Update(vm.Participation);
                 await _uow.SaveChangesAsync();
                 return RedirectToAction("EventDetails", "Events", new { id = vm.Participation.EventId });
