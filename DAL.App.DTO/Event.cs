@@ -14,6 +14,8 @@ public class Event : DomainEntityId<Guid>, IDomainEntityId
 
     [DateHigherOrEqualToToday]
     [DisplayName("Toimumisaeg")]
+    [DataType(DataType.Date)]
+    [DisplayFormat(DataFormatString = "{0:dd.MM.yyyy}")]
     public DateTime Date { get; set; }
 
     [DisplayName("Toimumiskoht")] public string Location { get; set; } = default!;

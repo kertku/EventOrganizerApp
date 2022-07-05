@@ -6,7 +6,7 @@
     ViewData["Title"] = "Index";
 }
 
-<h3>Osavõtjad</h3>
+<h3>@Model.Name informatsioon.</h3>
 
 <table class="table table-borderless w-50">
     <tbody>
@@ -74,17 +74,19 @@
                                 @Html.DisplayFor(modelItem => item.IndividualUser!.IdentificationCode)
                             </dd>
                         </td>
-                        <td>
-                            <dd class="col-sm-10">
-                                <a asp-controller="Participations" asp-action="CreateEdit" asp-route-id="@item.Id" asp-route-user="@item.IndividualUser.Id" asp-route-eventId="@Model.Id">Vaata</a>
-                            </dd>
-                        </td>
-                        <td>
-                            <dd class="col-sm-10">
-                                <a asp-controller="Events" asp-action="EventDetails" asp-route-id="@item.Id">Kustuta</a>
-                            </dd>
-                        </td>
-
+                        @if (Model.Date > DateTime.Today)
+                        {
+                            <td>
+                                <dd class="col-sm-10">
+                                    <a asp-controller="Participations" asp-action="CreateEdit" asp-route-id="@item.Id" asp-route-user="@item.IndividualUser.Id" asp-route-eventId="@Model.Id">Vaata</a>
+                                </dd>
+                            </td>
+                            <td>
+                                <dd class="col-sm-10">
+                                    <a asp-controller="Events" asp-action="EventDetails" asp-route-id="@item.Id">Kustuta</a>
+                                </dd>
+                            </td>
+                        }
                     </tr>
                 }
             }
@@ -103,14 +105,19 @@
                                 @Html.DisplayFor(modelItem => item.BusinessUser!.RegistryCode)
                             </dd>
                         </td>
-                        <td>
-                        <dd class="col-sm-10">
-                            <a asp-controller="Participations" asp-action="CreateEdit" asp-route-id="@item.Id" asp-route-user="@item.BusinessUser.Id" asp-route-eventId="@Model.Id" asp-route-bu="true">Vaata</a>
-                        </dd>
-                        <td>
-                        <dd class="col-sm-10">
-                            <a asp-controller="Events" asp-action="EventDetails" asp-route-id="@item.Id">Kustuta</a>
-                        </dd>
+                        @if (Model.Date > DateTime.Today)
+                        {
+                            <td>
+                                <dd class="col-sm-10">
+                                    <a asp-controller="Participations" asp-action="CreateEdit" asp-route-id="@item.Id" asp-route-user="@item.BusinessUser.Id" asp-route-eventId="@Model.Id" asp-route-bu="true">Vaata</a>
+                                </dd>
+                            </td>
+                            <td>
+                                <dd class="col-sm-10">
+                                    <a asp-controller="Events" asp-action="EventDetails" asp-route-id="@item.Id">Kustuta</a>
+                                </dd>
+                            </td>
+                        }
                     </tr>
                 }
             }
@@ -120,14 +127,15 @@
 
     </tbody>
 </table>
-<td>
-    <a asp-controller="Participations" asp-action="CreateEdit" asp-route-eventId="@Model.Id">Add Individual user</a>
-</td>
-<td>
-    <a asp-controller="Participations" asp-action="CreateEdit" asp-route-eventId="@Model.Id" asp-route-bu="true">Add Company</a>
-</td>
-
-
+@if (Model.Date > DateTime.Today)
+{
+    <td>
+        <a asp-controller="Participations" asp-action="CreateEdit" asp-route-eventId="@Model.Id">Add Individual user</a>
+    </td>
+    <td>
+        <a asp-controller="Participations" asp-action="CreateEdit" asp-route-eventId="@Model.Id" asp-route-bu="true">Add Company</a>
+    </td>
+}
 <dl class="row">
 
 
