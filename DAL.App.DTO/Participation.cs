@@ -8,8 +8,6 @@ namespace DAL.App.DTO;
 
 public class Participation : DomainEntityId<Guid>, IDomainEntityId
 {
-    
-   
     [DisplayName("Informatsioon")]
     [StringLength(5000)]
     public string Information { get; set; } = default!;
@@ -25,5 +23,6 @@ public class Participation : DomainEntityId<Guid>, IDomainEntityId
     public IndividualUser? IndividualUser { get; set; }
 
     public Guid EventId { get; set; }
-    public Event? Event { get; set; }
+
+    [DisplayName("Üritus")] public Event? Event { get; set; }
 }

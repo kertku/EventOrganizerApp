@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using Contracts.Domain.Base;
 using Domain.App.Validators;
@@ -9,13 +10,16 @@ namespace DAL.App.DTO;
 
 public class Event : DomainEntityId<Guid>, IDomainEntityId
 {
-    public string Name { get; set; } = default!;
+    [DisplayName("Ürituse nimi")] public string Name { get; set; } = default!;
 
-    [DateHigherOrEqualToToday] public DateTime Date { get; set; }
+    [DateHigherOrEqualToToday]
+    [DisplayName("Toimumisaeg")]
+    public DateTime Date { get; set; }
 
-    public string Location { get; set; } = default!;
+    [DisplayName("Toimumiskoht")] public string Location { get; set; } = default!;
 
     [StringLength(5000)] public string Information { get; set; } = default!;
+
 
     public ICollection<Participation>? Participations { get; set; }
 }

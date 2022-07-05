@@ -1,3 +1,4 @@
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using Contracts.Domain.Base;
 using Domain.Base;
@@ -6,9 +7,12 @@ namespace Domain.App;
 
 public class Participation : DomainEntityId<Guid>, IDomainEntityId
 {
-    [StringLength(5000)] public string? Information { get; set; }
+    [DisplayName("Informatsioon")]
+    [StringLength(5000)]
+    public string? Information { get; set; }
 
     public Guid PaymentTypeId { get; set; }
+
     public PaymentType PaymentType { get; set; } = default!;
 
     public Guid? BusinessUserId { get; set; }
@@ -18,5 +22,6 @@ public class Participation : DomainEntityId<Guid>, IDomainEntityId
     public IndividualUser? IndividualUser { get; set; }
 
     public Guid EventId { get; set; }
+
     public Event? Event { get; set; }
 }
