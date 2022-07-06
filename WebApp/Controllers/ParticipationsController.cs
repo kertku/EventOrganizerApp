@@ -78,7 +78,7 @@ public class ParticipationsController : Controller
 
                 _uow.Participation.Add(vm.Participation);
                 await _uow.SaveChangesAsync();
-                return RedirectToAction(nameof(Index), "Home");
+                return RedirectToAction("EventDetails", "Events", new { id = vm.Participation.EventId });
             }
         }
         else

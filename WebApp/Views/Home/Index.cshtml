@@ -65,7 +65,7 @@
                 <tbody>
                 @foreach (var item in Model!)
                 {
-                    @if (item.Date < DateTime.UtcNow)
+                    @if (item.Date < DateTime.Now)
                     {
                         <tr>
                             <th scope="row">@pastCounter</th>

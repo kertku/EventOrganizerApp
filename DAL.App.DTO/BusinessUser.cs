@@ -15,8 +15,8 @@ public class BusinessUser : DomainEntityId<Guid>, IDomainEntityId
     public string CompanyName { get; set; } = default!;
 
     [Range(10000000, 99999999,
-        ErrorMessage = "{0} peab olema vahemikus {1} - {2}.")]
-    [DisplayName("Ettevõtte nimetus")]
+        ErrorMessage = "{0} peab olema kaheksa kohaline number.")]
+    [DisplayName("Registrikood ")]
     public int RegistryCode { get; set; }
 
     [DisplayName("Osalejate arv")] public int NumberOfParticipants { get; set; }
