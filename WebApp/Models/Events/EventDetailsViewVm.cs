@@ -20,7 +20,7 @@ public class EventDetailsViewVm
     [DisplayName("Koht")] public string Location { get; set; } = default!;
     public SelectList? PaymentTypeSelectList { get; set; }
 
-    public Participation Participation { get; set; }
+    public Participation? Participation { get; set; }
 
     [DisplayName("Osavõtjad")] public List<Participation>? Participations { get; set; } = new();
 }

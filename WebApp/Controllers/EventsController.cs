@@ -22,9 +22,9 @@ public class EventsController : Controller
         return View(await _uow.Event.GetAllOrderedAsync());
     }
 
-    public async Task<IActionResult> Create()
+    public Task<IActionResult> Create()
     {
-        return View();
+        return Task.FromResult<IActionResult>(View());
     }
 
     // POST: PartInPartsStocks/Create

@@ -8,17 +8,29 @@
 
 <div class="text-center">
     <div class="row">
-        <div class="col col-blue">Miski text siin! </div>
+
+        <div class="col col-blue fs-4 lh-2 d-flex flex-column min-vh-50 justify-content-center align-items-center">
+            <blockquote class="blockquote text-center">
+                <p class="mb-0">
+                    Lorem ipsum dolor sit amet, <b>consectetur adipiscing</b> elit.
+                    Maecenas dui tellus, <b>accumsan</b>accumsan vel tellus at, fringilla dapibus erat.
+                    Curabitur dapibus arcu placerat <b>sapien</b>ultricies, sit amet pellentesque turpis venenatis..
+                </p>
+            </blockquote>
+
+        </div>
         <div class="col">
-            <img src="images/pilt.jpg" alt="Sample Photo"/>
+            <img class="img-fluid w-100 h-100 d-inline-block" src="images/pilt.jpg" alt="Sample Photo"/>
         </div>
         <div class="w-100 mt-5"></div>
 
-        <div class="col flex-container">
+        <div class="col h-50 d-inline-block">
 
-            <div class="inner-div1">Tulevased üritused</div>
+            <div class="inner-div1 flex-column min-vh-10 justify-content-center align-items-center">
+                <span >Tulevased üritused</span>
+            </div>
 
-            <table class="table">
+            <table class="table table-borderless ">
                 <tbody>
                 @foreach (var item in Model!)
                 {
@@ -29,7 +41,7 @@
                             <td>@Html.DisplayFor(modelItem => item.Name)</td>
                             <td>@Html.DisplayFor(modelItem => item.Date)</td>
                             <td>
-                                <a asp-controller="Events" asp-action="EventDetails" asp-route-id="@item.Id">Osalejad</a>
+                                <a class="text-decoration-none" asp-controller="Events" asp-action="EventDetails" asp-route-id="@item.Id">Osalejad</a>
                             </td>
                             <td>
                                 <a asp-controller="Events" asp-action="Delete" asp-route-id="@item.Id">
@@ -43,13 +55,13 @@
                 }
                 </tbody>
             </table>
-            <div class="add-event">
-                <a asp-controller="Events" asp-action="Create">Lisa Üritus</a>
+            <div class="float-left w-100">
+                <a class="float-left text-decoration-none " asp-controller="Events" asp-action="Create">Lisa Üritus</a>
             </div>
         </div>
-        <div class="col flex-container">
+        <div class="col w-100">
             <div class="inner-div1">Toimunude üritused</div>
-            <table class="table">
+            <table class="table table-borderless">
                 <tbody>
                 @foreach (var item in Model!)
                 {
@@ -60,7 +72,7 @@
                             <td>@Html.DisplayFor(modelItem => item.Name)</td>
                             <td>@Html.DisplayFor(modelItem => item.Date)</td>
                             <td>
-                                <a asp-controller="Events" asp-action="EventDetails" asp-route-id="@item.Id">Osalejad</a>
+                                <a class="text-decoration-none" asp-controller="Events" asp-action="EventDetails" asp-route-id="@item.Id">Osalejad</a>
                             </td>
 
                         </tr>

@@ -19,19 +19,29 @@ body {
 
 
 .col-blue {
-    background-color: #0041C2;
+    background-color: #0049B7;
     color: white
 }
 
 
 .flex-container {
     display: flex;
+    justify-content: center;
+    align-items: center;
     flex-direction: column;
     margin: 0
 }
 
 .inner-div1 {
-    background-color: #0041C2;
+    background-color: #0049B7;
     height: 50px;
+    text-align: center;
+    color: white
 }
+
+.headline {
+    color: #0049B7
+
+}
+
 
