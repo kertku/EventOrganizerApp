@@ -27,9 +27,7 @@ public class EventsController : Controller
         return Task.FromResult<IActionResult>(View());
     }
 
-    // POST: PartInPartsStocks/Create
-    // To protect from overposting attacks, enable the specific properties you want to bind to.
-    // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+
     [HttpPost]
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Create(Event @event)
@@ -50,13 +48,25 @@ public class EventsController : Controller
         return View(_mapper.Map<EventDetailsViewVm>(eventWithParticipates));
     }
 
-    [HttpPost]
-    [ActionName("Delete")]
-    [ValidateAntiForgeryToken]
     public async Task<IActionResult> Delete(Guid id)
     {
-        await _uow.Event.RemoveAsync(id);
-        await _uow.SaveChangesAsync();
-        return RedirectToAction(nameof(Index), "Home");
+        var eventObj = await _uow.Event.FirstOrDefaultAsync(id);
+        var vm = new DeleteVm();
+        if (eventObj != null) vm.EventName = eventObj.Name;
+        vm.Id = id;
+
+        return View(vm);
     }
+
+
+    [HttpPost]
+        [ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Delete(DeleteVm vm)
+        {
+            await _uow.Event.RemoveAsync(vm.Id);
+            await _uow.SaveChangesAsync();
+            return RedirectToAction(nameof(Index), "Home");
+        }
+    
 }

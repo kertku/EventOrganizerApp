@@ -32,7 +32,7 @@
 
             <table class="table table-borderless ">
                 <tbody>
-                @foreach (var item in Model!)
+                @foreach (var item in Model)
                 {
                     @if (item.Date > DateTime.UtcNow)
                     {
@@ -55,15 +55,17 @@
                 }
                 </tbody>
             </table>
-            <div class="float-left w-100">
-                <a class="float-left text-decoration-none " asp-controller="Events" asp-action="Create">Lisa Üritus</a>
+            <div class="float-left w-100 d-flex justify-content-start">
+                <h4>
+                    <a class="float-left text-decoration-none ms-2 mt-3 mb-2" asp-controller="Events" asp-action="Create">Lisa Üritus</a>
+                </h4>
             </div>
         </div>
         <div class="col w-100">
             <div class="inner-div1">Toimunude üritused</div>
             <table class="table table-borderless">
                 <tbody>
-                @foreach (var item in Model!)
+                @foreach (var item in Model)
                 {
                     @if (item.Date < DateTime.Now)
                     {

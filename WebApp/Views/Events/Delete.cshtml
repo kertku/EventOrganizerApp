@@ -1,0 +1,16 @@
+@model WebApp.Models.Events.DeleteVm
+
+<div class="container d-flex justify-content-center ">
+    <div class="mt-5">
+        <div class="alert alert-danger mt-8 w-100 " role="alert">
+            Oled kindel, et soovid kustutada üritust @Model.EventName
+        </div>
+
+        <form asp-action="Delete">
+            <input type="hidden" asp-for="Id"/>
+            <input type="hidden" asp-for="EventName"/>
+            <input type="submit" value="Kustuta" class="btn btn-danger"/>
+            <a class="btn btn-primary ms-2" asp-controller="Home" asp-action="Index">Tühista</a>
+        </form>
+    </div>
+</div>
