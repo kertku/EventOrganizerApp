@@ -15,7 +15,7 @@ public class BusinessUser : DomainEntityId<Guid>, IDomainEntityId
     public string CompanyName { get; set; } = default!;
 
     [Range(10000000, 99999999,
-        ErrorMessage = "{0} peab olema kaheksa kohaline number.")]
+        ErrorMessage = "{0} peab olema kaheksakohaline number.")]
     [DisplayName("Registrikood ")]
     public int RegistryCode { get; set; }
 

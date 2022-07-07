@@ -110,4 +110,31 @@ public class ParticipationsController : Controller
 
         return View("~/Views/Events/EventDetails.cshtml");
     }
+
+    public async Task<IActionResult> Delete(Guid id)
+    {
+        var participationObj = await _uow.Participation.FirstOrDefaultAsync(id);
+
+
+        var vm = new DeleteParticipationVm();
+        vm.Name = participationObj!.BusinessUserId != null
+            ? participationObj.BusinessUser!.CompanyName
+            : participationObj.IndividualUser!.FullName;
+
+        vm.Id = id;
+        vm.EventName = participationObj.Event!.Name;
+        vm.EventId = participationObj.EventId;
+        return View(vm);
+    }
+
+
+    [HttpPost]
+    [ActionName("Delete")]
+    [ValidateAntiForgeryToken]
+    public async Task<IActionResult> Delete(DeleteParticipationVm vm)
+    {
+        await _uow.Participation.RemoveAsync(vm.Id);
+        await _uow.SaveChangesAsync();
+        return RedirectToAction("EventDetails", "Events", new { id = vm.EventId });
+    }
 }

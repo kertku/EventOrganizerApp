@@ -1,0 +1,18 @@
+@using Microsoft.AspNetCore.Mvc.TagHelpers
+@model WebApp.Models.Participations.DeleteParticipationVm
+
+<div class="container d-flex justify-content-center ">
+    <div class="mt-5">
+        <div class="alert alert-danger mt-8 w-100 " role="alert">
+            @Model.Name kustutatakse ürituselt @Model.EventName!
+        </div>
+
+        <form asp-action="Delete">
+            <input type="hidden" asp-for="Id"/>
+            <input type="hidden" asp-for="EventName"/>
+            <input type="hidden" asp-for="EventId"/>
+            <input type="submit" value="Kustuta" class="btn btn-danger"/>
+            <a class="btn btn-primary ms-2" asp-controller="Events" asp-action="EventDetails" asp-route-id="@Model.EventId">Tühista</a>
+        </form>
+    </div>
+</div>
