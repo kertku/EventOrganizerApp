@@ -6,6 +6,7 @@ using WebApp.Models.PaymentTypes;
 
 namespace WebApp.Controllers;
 
+[Route("admin/[controller]/[action]")]
 public class PaymentTypesController : Controller
 {
     private readonly IMapper _mapper;
@@ -16,7 +17,7 @@ public class PaymentTypesController : Controller
         _mapper = mapper;
         _uow = uow;
     }
-
+    [Route("/admin/PaymentTypes")]
     public async Task<IActionResult> Index()
     {
         return View(await _uow.PaymentType.GetAllOrderedAsync());
