@@ -1,4 +1,5 @@
-﻿using Domain.App;
+﻿using DAL.App.EF.SeedData;
+using Domain.App;
 using Microsoft.EntityFrameworkCore;
 
 namespace DAL.App.EF;
@@ -15,4 +16,10 @@ public class AppDbContext : DbContext
     public DbSet<IndividualUser> IndividualUsers { get; set; } = default!;
     public DbSet<Participation> Participations { get; set; } = default!;
     public DbSet<PaymentType> PaymentTypes { get; set; } = default!;
+
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        base.OnModelCreating(modelBuilder);
+        modelBuilder.Seed();
+    }
 }

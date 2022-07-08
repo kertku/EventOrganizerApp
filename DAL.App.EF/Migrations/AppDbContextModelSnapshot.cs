@@ -38,6 +38,32 @@ namespace DAL.App.EF.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("BusinessUsers");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("83f86ba8-0659-4fb6-a737-023a215c2c9c"),
+                            CompanyName = "Tublitöö As",
+                            RegistryCode = 77443382
+                        },
+                        new
+                        {
+                            Id = new Guid("a91fd073-92a9-45a5-b041-9ad00d9b50df"),
+                            CompanyName = "Kõva Kate OÜ",
+                            RegistryCode = 77443382
+                        },
+                        new
+                        {
+                            Id = new Guid("192109a9-9489-4e2c-86b7-21b8c4b8b983"),
+                            CompanyName = "Teeme Tööd OÜ",
+                            RegistryCode = 77443382
+                        },
+                        new
+                        {
+                            Id = new Guid("b5725183-7434-45bc-aeca-28bbd1689167"),
+                            CompanyName = "Testiminse AS",
+                            RegistryCode = 77443382
+                        });
                 });
 
             modelBuilder.Entity("Domain.App.Event", b =>
@@ -64,6 +90,40 @@ namespace DAL.App.EF.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Events");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("f817da15-f2b6-411d-a8c8-90b83db3f8ad"),
+                            Date = new DateTime(2022, 9, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Information = "Osad räägivad, teised kuulavad.",
+                            Location = "Ärimajas",
+                            Name = "Suvine seminar"
+                        },
+                        new
+                        {
+                            Id = new Guid("15ed81e5-6a38-4716-81ae-ec5cc52f32c0"),
+                            Date = new DateTime(2022, 6, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Information = "Osad räägivad, teised kuulavad.",
+                            Location = "Linnahall",
+                            Name = "Eilene üritus"
+                        },
+                        new
+                        {
+                            Id = new Guid("1c6e7a5a-6937-4399-9d9c-8dc84c0a20ba"),
+                            Date = new DateTime(2022, 7, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Information = "Saame kokku ja kuulame",
+                            Location = "Metsas",
+                            Name = "Suvepäevad"
+                        },
+                        new
+                        {
+                            Id = new Guid("e0c7195d-cef5-4851-b8d6-c4cfcbe70c91"),
+                            Date = new DateTime(2022, 4, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Information = "Tasub kindlasti tulla kõigil.",
+                            Location = "Aia 33, Tallinn",
+                            Name = "Juhi sünnipäev"
+                        });
                 });
 
             modelBuilder.Entity("Domain.App.IndividualUser", b =>
@@ -89,6 +149,40 @@ namespace DAL.App.EF.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("IndividualUsers");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("058a8bde-1688-4e2d-bcfb-a683cfd67377"),
+                            FirstName = "Kaupe",
+                            IdentificationCode = 46611110222L,
+                            Information = "tubli",
+                            LastName = "Kask"
+                        },
+                        new
+                        {
+                            Id = new Guid("9dcadced-12e5-41fd-8ac2-59a63bef203e"),
+                            FirstName = "Piia",
+                            IdentificationCode = 46311110222L,
+                            Information = "Infot palju ei ole",
+                            LastName = "Tulp"
+                        },
+                        new
+                        {
+                            Id = new Guid("53ab12fb-0ac2-432b-b012-e99f923802db"),
+                            FirstName = "Aivar",
+                            IdentificationCode = 46411110222L,
+                            Information = "test",
+                            LastName = "Roos"
+                        },
+                        new
+                        {
+                            Id = new Guid("24460629-1ce8-4652-90aa-b45a36312542"),
+                            FirstName = "Kalle",
+                            IdentificationCode = 46111110222L,
+                            Information = "test",
+                            LastName = "Sinilill"
+                        });
                 });
 
             modelBuilder.Entity("Domain.App.Participation", b =>
@@ -143,6 +237,18 @@ namespace DAL.App.EF.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("PaymentTypes");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("46ea1c1a-5467-4ab7-a18f-df6f1ca0b929"),
+                            PaymentTypeName = "Kaardimakse"
+                        },
+                        new
+                        {
+                            Id = new Guid("12b9e68d-9f54-4512-8693-e8409a40825f"),
+                            PaymentTypeName = "Sularaha"
+                        });
                 });
 
             modelBuilder.Entity("Domain.App.Participation", b =>

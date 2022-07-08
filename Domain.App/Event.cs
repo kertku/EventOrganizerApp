@@ -7,7 +7,6 @@ public class Event : DomainEntityId<Guid>, IDomainEntityId
 {
     public string Name { get; set; } = default!;
 
-
     public DateTime Date { get; set; }
 
     public string Location { get; set; } = default!;
