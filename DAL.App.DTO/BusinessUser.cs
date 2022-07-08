@@ -19,7 +19,6 @@ public class BusinessUser : DomainEntityId<Guid>, IDomainEntityId
     [DisplayName("Registrikood ")]
     public int RegistryCode { get; set; }
 
-    [DisplayName("Osalejate arv")] public int NumberOfParticipants { get; set; }
 
     [DisplayName("Osalejad")] public ICollection<Participation>? Participations { get; set; }
 }

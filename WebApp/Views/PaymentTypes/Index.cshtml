@@ -1,0 +1,32 @@
+@model IEnumerable<DAL.App.DTO.PaymentType>
+
+<h3 class="headline my-3 mt-2 mb-2">Maksemeetodid.</h3>
+<p>
+    <a asp-action="CreateEdit" id="create">Lisa uus maksemeetod.</a>
+</p>
+<table class="table w-50">
+    <thead>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.PaymentTypeName)
+        </th>
+
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model!)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.PaymentTypeName)
+            </td>
+
+            <td>
+                <a asp-action="CreateEdit" asp-route-id="@item.Id">Muuda</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Kustuta</a>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>

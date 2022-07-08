@@ -3,6 +3,7 @@ using DAL.App.DTO;
 using WebApp.Models;
 using WebApp.Models.Events;
 using WebApp.Models.IndividualUsers;
+using WebApp.Models.PaymentTypes;
 
 namespace WebApp.MapperProfiles;
 
@@ -14,6 +15,7 @@ public class AutoMapperProfiles : Profile
         CreateMap<EventCreateEditViewModel, Domain.App.Event>().ReverseMap();
         CreateMap<EventCreateEditViewModel, Event>().ReverseMap();
         CreateMap<IndividualUser, IndividualUserViewModel>().ReverseMap();
+        CreateMap<PaymentTypeVm, PaymentType>().ReverseMap();
 
         CreateMap<Event, EventDetailsViewVm>().ForMember(i => i.Participations,
                 opt => opt

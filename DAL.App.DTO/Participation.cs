@@ -12,6 +12,8 @@ public class Participation : DomainEntityId<Guid>, IDomainEntityId
     [StringLength(5000)]
     public string Information { get; set; } = default!;
 
+    [DisplayName("Osalejate arv")] public int? NumberOfParticipants { get; set; }
+
     [DisplayName("Maksetüüp")] public Guid PaymentTypeId { get; set; }
 
     public PaymentType PaymentType { get; set; } = default!;

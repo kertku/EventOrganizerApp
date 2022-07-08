@@ -1,0 +1,15 @@
+@model WebApp.Models.PaymentTypes.PaymentTypeVm
+
+<h3 class="headline my-3 mt-2 mb-2">Maksemeetodi lisamine.</h3>
+<hr/>
+<h4>Oled kindel, et soovid maksemeetodit "@Model.PaymentTypeName" kustutada ?</h4>
+<div>
+
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id"/>
+        <div class="form-group mt-2">
+            <input type="submit" value="Kustuta" class="btn btn-primary"/>
+            <a class="btn btn-primary ms-2" asp-controller="PaymentTypes" asp-action="Index">Tagasi</a>
+        </div>
+    </form>
+</div>

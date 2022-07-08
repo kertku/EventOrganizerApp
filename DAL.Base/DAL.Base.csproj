@@ -2,7 +2,7 @@
 
     <PropertyGroup>
         <TargetFramework>net6.0</TargetFramework>
-        <!--<RootNamespace>DAL.Base</RootNamespace>-->
+        <RootNamespace>DAL.Base</RootNamespace>
     </PropertyGroup>
 
     <ItemGroup>

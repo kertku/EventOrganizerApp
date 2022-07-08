@@ -10,7 +10,7 @@ namespace DAL.App.DTO;
 public class PaymentType : DomainEntityId<Guid>, IDomainEntityId
 {
     [StringLength(32, MinimumLength = 2)]
-    [DisplayName("Makseviis")]
+    [DisplayName("Maksemeetod")]
     public string PaymentTypeName { get; set; } = default!;
 
     public ICollection<Participation>? Participations { get; set; }

@@ -11,7 +11,8 @@ public class IndividualUser : DomainEntityId<Guid>, IDomainEntityId
     public string LastName { get; set; } = default!;
 
     public long IdentificationCode { get; set; }
-    public string Information { get; set; } = default!;
+
+    public string? Information { get; set; } = default!;
 
     public ICollection<Participation>? Participations { get; set; }
 

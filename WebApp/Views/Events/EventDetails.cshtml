@@ -78,12 +78,12 @@
                         {
                             <td>
                                 <dd class="col-sm-10">
-                                    <a asp-controller="Participations" asp-action="CreateEdit" asp-route-id="@item.Id" asp-route-user="@item.IndividualUser.Id" asp-route-eventId="@Model.Id">Vaata</a>
+                                    <a asp-controller="Participations" asp-action="CreateEdit" asp-route-id="@item.Id" asp-route-user="@item.IndividualUser.Id" asp-route-eventId="@Model.Id">Vaata/Muuda</a>
                                 </dd>
                             </td>
                             <td>
                                 <dd class="col-sm-10">
-                                    <a asp-controller="Participations" asp-action="Delete" asp-route-id="@item.Id" >Kustuta</a>
+                                    <a asp-controller="Participations" asp-action="Delete" asp-route-id="@item.Id">Kustuta</a>
                                 </dd>
                             </td>
                         }
@@ -109,12 +109,12 @@
                         {
                             <td>
                                 <dd class="col-sm-10">
-                                    <a asp-controller="Participations" asp-action="CreateEdit" asp-route-id="@item.Id" asp-route-user="@item.BusinessUser.Id" asp-route-eventId="@Model.Id" asp-route-bu="true">Vaata</a>
+                                    <a asp-controller="Participations" asp-action="CreateEdit" asp-route-id="@item.Id" asp-route-user="@item.BusinessUser.Id" asp-route-eventId="@Model.Id" asp-route-bu="true">Vaata/Muuda</a>
                                 </dd>
                             </td>
                             <td>
                                 <dd class="col-sm-10">
-                                   <a asp-controller="Participations" asp-action="Delete" asp-route-id="@item.Id" >Kustuta</a>
+                                    <a asp-controller="Participations" asp-action="Delete" asp-route-id="@item.Id">Kustuta</a>
                                 </dd>
                             </td>
                         }
