@@ -20,7 +20,9 @@ public class Event : DomainEntityId<Guid>, IDomainEntityId
 
     [DisplayName("Toimumiskoht")] public string Location { get; set; } = default!;
 
-    [StringLength(5000)] public string Information { get; set; } = default!;
+    [StringLength(1000, ErrorMessage = "{0} välja pikkus maksimaalselt {1} märki!")]
+    [DisplayName("Informatsioon")]
+    public string Information { get; set; } = default!;
 
 
     public ICollection<Participation>? Participations { get; set; }

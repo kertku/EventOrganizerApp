@@ -16,7 +16,7 @@ public class Participation : DomainEntityId<Guid>, IDomainEntityId
 
     [DisplayName("Maksetüüp")] public Guid PaymentTypeId { get; set; }
 
-    public PaymentType PaymentType { get; set; } = default!;
+    public PaymentType? PaymentType { get; set; } = default!;
 
     public Guid? BusinessUserId { get; set; }
     public BusinessUser? BusinessUser { get; set; }

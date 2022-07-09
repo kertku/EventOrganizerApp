@@ -29,6 +29,7 @@ public class ParticipationsController : Controller
         if (eventId != null) vm.EventId = Guid.Parse(eventId);
         vm.PaymentTypeSelectList = new SelectList(await _uow.PaymentType.GetAllOrderedAsync(), "Id",
             "PaymentTypeName", vm.Participation?.PaymentTypeId);
+        
         if (bu != null && bool.Parse(bu))
             vm.BusinessUser = new BusinessUser();
         else
@@ -78,7 +79,7 @@ public class ParticipationsController : Controller
 
                 _uow.Participation.Add(vm.Participation);
                 await _uow.SaveChangesAsync();
-                return RedirectToAction("EventDetails", "Events", new { id = vm.Participation.EventId });
+                return RedirectToAction("EventDetails", "Events", new { id = vm.EventId });
             }
         }
         else
@@ -100,7 +101,7 @@ public class ParticipationsController : Controller
 
                 _uow.Participation.Update(vm.Participation);
                 await _uow.SaveChangesAsync();
-                return RedirectToAction("EventDetails", "Events", new { id = vm.Participation.EventId });
+                return RedirectToAction("EventDetails", "Events", new { id = vm.EventId });
             }
         }
 
@@ -108,7 +109,7 @@ public class ParticipationsController : Controller
             "PaymentType",
             vm.Participation!.PaymentTypeId);
 
-        return View("~/Views/Events/EventDetails.cshtml");
+        return View(vm);
     }
 
     public async Task<IActionResult> Delete(Guid id)
@@ -116,14 +117,16 @@ public class ParticipationsController : Controller
         var participationObj = await _uow.Participation.FirstOrDefaultAsync(id);
 
 
-        var vm = new DeleteParticipationVm();
-        vm.Name = participationObj!.BusinessUserId != null
-            ? participationObj.BusinessUser!.CompanyName
-            : participationObj.IndividualUser!.FullName;
+        var vm = new DeleteParticipationVm
+        {
+            Name = participationObj!.BusinessUserId != null
+                ? participationObj.BusinessUser!.CompanyName
+                : participationObj.IndividualUser!.FullName,
+            Id = id,
+            EventName = participationObj.Event!.Name,
+            EventId = participationObj.EventId
+        };
 
-        vm.Id = id;
-        vm.EventName = participationObj.Event!.Name;
-        vm.EventId = participationObj.EventId;
         return View(vm);
     }
 
