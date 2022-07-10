@@ -1,12 +1,17 @@
 @model DAL.App.DTO.Event
 
-@{
-    ViewData["Title"] = "Create";
-}
+<div class="container h-auto ps-0">
+    <div class="row g-0">
+        <div class="col col-blue fs-4 lh-2 d-flex flex-column min-vh-50 justify-content-center align-items-center">
+            <h3 >Ürituse lisamine</h3>
+        </div>
+        <div class="col-8">
+            <img class="img-fluid w-100 h-20 d-inline-block" src="~/images/libled.jpg" alt="Photo"/>
+        </div>
+    </div>
+</div>
 
 
-<h3 class="headline my-3 mt-2 mb-2">Ürituse lisamine.</h3>
-<hr/>
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Create">

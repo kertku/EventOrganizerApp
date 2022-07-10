@@ -1,13 +1,32 @@
 @using Microsoft.AspNetCore.Mvc.TagHelpers
 @model WebApp.Models.Participations.ParticipationCreateEditVm
+<div class="container h-auto ps-0 pb-4">
+    <div class="row g-0">
+        <div class="col col-blue fs-4 lh-2 d-flex flex-column min-vh-50 justify-content-center align-items-center">
+            <h3>
+                @if (Model.Participation!.Id != Guid.Empty)
+                {
+                    <p>Muuda osalemist</p>
+                }
+                else
+                {
+                    <p>Lisa osaleja</p>
+                }
+            </h3>
+        </div>
+        <div class="col-8">
+            <img class="img-fluid w-100 h-20 d-inline-block" src="~/images/libled.jpg" alt="Photo"/>
+        </div>
+    </div>
+</div>
 
 @if (Model.IsBusinessUser)
 {
-    <partial name="_AddCreateBusinessUserPartial" />
+    <partial name="_AddCreateBusinessUserPartial"/>
 }
 else
 {
-    <partial name="_AddIndividualParticipatorPartial" />
+    <partial name="_AddIndividualParticipatorPartial"/>
 }
 
 

@@ -1,12 +1,16 @@
 @model WebApp.Models.Events.EventDetailsViewVm
 
 
-
-@{
-    ViewData["Title"] = "Index";
-}
-
-<h3 class="headline my-3 mt-2 mb-2">@Model.Name informatsioon.</h3>
+<div class="container h-auto ps-0 pb-4">
+    <div class="row g-0">
+        <div class="col col-blue fs-4 lh-2 d-flex flex-column min-vh-50 justify-content-center align-items-center">
+            <h3 >@Model.Name informatsioon</h3>
+        </div>
+        <div class="col-8">
+            <img class="img-fluid w-100 h-20 d-inline-block" src="~/images/libled.jpg" alt="Photo"/>
+        </div>
+    </div>
+</div>
 
 <table class="table table-borderless w-50">
     <tbody>
@@ -130,10 +134,12 @@
 @if (Model.Date > DateTime.Today)
 {
     <td>
-        <a asp-controller="Participations" asp-action="CreateEdit" asp-route-eventId="@Model.Id">Add Individual user</a>
-    </td>
-    <td>
-        <a asp-controller="Participations" asp-action="CreateEdit" asp-route-eventId="@Model.Id" asp-route-bu="true">Add Company</a>
+        <h5>
+            <p class="lead">
+                <a class="float-left text-decoration-none ms-2 mt-3 mb-2" asp-controller="Participations" asp-action="CreateEdit" asp-route-eventId="@Model.Id">Lisa eraisik</a>
+                <a class="text-decoration-none ms-5 mt-3 mb-5" asp-controller="Participations" asp-action="CreateEdit" asp-route-eventId="@Model.Id" asp-route-bu="true">Lisa ettevõte</a>
+            </p>
+        </h5>
     </td>
 }
 <dl class="row">

@@ -1,14 +1,5 @@
 @model WebApp.Models.Participations.ParticipationCreateEditVm
 <div class="container w-50">
-    @if (Model.Participation!.Id != Guid.Empty)
-    {
-        <h3 class="headline my-3 mt-2 mb-2">Muuda osalemist.</h3>
-    }
-    else
-    {
-        <h3 class="headline my-3 mt-2 mb-2">Lisa osaleja.</h3>
-    }
-
     <form asp-action="CreateEdit">
         <div class="form-group">
             <label asp-for="IndividualUser!.FirstName" class="control-label"></label>

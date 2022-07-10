@@ -4,12 +4,11 @@ Author:Kert Kullerkann
 
 ## Prerequirements
 
-* Visual Studio 2017
-* .NET Core SDK
-* SQL Server
+* MSQL Server or PostgreSQL db.
 
 ## How To Run
 
-* Open solution in Visual Studio 2017
-* Set .Web project as Startup Project and build the project.
+* Open solution in Visual Studio
+* Set .WebApp project as Startup Project and build the project.
+* Replace the values of  "YourConnection"
 * Run the application.

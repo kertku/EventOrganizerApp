@@ -13,6 +13,12 @@ builder.Services.AddDbContext<AppDbContext>(options =>
         .EnableDetailedErrors()
         .EnableSensitiveDataLogging());
 
+/*// Add services to the container.
+var connectionString = builder.Configuration.GetConnectionString("PostgreSQL");
+builder.Services.AddDbContext<AppDbContext>(options =>
+    options.UseNpgsql(connectionString));*/
+
+
 builder.Services.AddAutoMapper(
     typeof(AutoMapperProfile),
     typeof(AutoMapperProfiles));
