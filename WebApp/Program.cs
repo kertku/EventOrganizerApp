@@ -6,12 +6,15 @@ using WebApp.MapperProfiles;
 
 var builder = WebApplication.CreateBuilder(args);
 
-var connectionString = builder.Configuration.GetConnectionString("MsSQL");
+builder.Services.AddDbContext<AppDbContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("EventOrganizer")));
+
+/*var connectionString = builder.Configuration.GetConnectionString("MsSQL");
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlServer(
             connectionString)
         .EnableDetailedErrors()
-        .EnableSensitiveDataLogging());
+        .EnableSensitiveDataLogging());*/
 
 /*// Add services to the container.
 var connectionString = builder.Configuration.GetConnectionString("PostgreSQL");
