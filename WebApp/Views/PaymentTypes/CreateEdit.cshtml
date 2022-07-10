@@ -1,14 +1,23 @@
 @model WebApp.Models.PaymentTypes.PaymentTypeVm
 
-@if (Model.Id == Guid.Empty)
-{
-    <h3 class="headline my-3 mt-2 mb-2">Maksemeetodi lisamine.</h3>
-}
-else
-{
-    <h3 class="headline my-3 mt-2 mb-2">Maksemeetodi muutmine.</h3>
-}
-
+<div class="container h-auto ps-0">
+    <div class="row g-0">
+        <div class="col col-blue fs-4 lh-2 d-flex flex-column min-vh-50 justify-content-center align-items-center">
+            <p >
+            @if (Model.Id == Guid.Empty)
+            {
+                <p>Maksemeetodi lisamine</p>
+            }
+            else
+            {
+                <p>Maksemeetodi muutmine</p>
+            }
+        </div>
+        <div class="col-8">
+            <img class="img-fluid w-100 h-20 d-inline-block" src="~/images/libled.jpg" alt="Photo"/>
+        </div>
+    </div>
+</div>
 <hr/>
 <div class="row">
     <div class="col-md-4">
@@ -19,12 +28,12 @@ else
                 <input asp-for="PaymentTypeName" class="form-control"/>
                 <span asp-validation-for="PaymentTypeName" class="text-danger"></span>
             </div>
-             <input type="hidden" asp-for="Id"/>
+            <input type="hidden" asp-for="Id"/>
             <div class="form-group mt-2">
                 <div class="form-group mt-2">
                     @if (Model.Id == Guid.Empty)
                     {
-                         <input type="submit" value="Lisa" class="btn btn-primary"/>
+                        <input type="submit" value="Lisa" class="btn btn-primary"/>
                     }
                     else
                     {
@@ -36,6 +45,7 @@ else
         </form>
     </div>
 </div>
+
 @section Scripts {
     @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
 }

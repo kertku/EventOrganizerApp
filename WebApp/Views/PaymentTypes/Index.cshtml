@@ -1,6 +1,15 @@
 @model IEnumerable<DAL.App.DTO.PaymentType>
 
-<h3 class="headline my-3 mt-2 mb-2">Maksemeetodid.</h3>
+<div class="container h-auto ps-0 pb-4">
+    <div class="row g-0">
+        <div class="col col-blue fs-4 lh-2 d-flex flex-column min-vh-50 justify-content-center align-items-center">
+            <h3 >Maksemeetodid</h3>
+        </div>
+        <div class="col-8">
+            <img class="img-fluid w-100 h-20 d-inline-block" src="~/images/libled.jpg" alt="Photo"/>
+        </div>
+    </div>
+</div>
 <p>
     <a asp-action="CreateEdit" id="create">Lisa uus maksemeetod.</a>
 </p>
