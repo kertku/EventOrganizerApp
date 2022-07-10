@@ -29,7 +29,7 @@ public class ParticipationsController : Controller
         if (eventId != null) vm.EventId = Guid.Parse(eventId);
         vm.PaymentTypeSelectList = new SelectList(await _uow.PaymentType.GetAllOrderedAsync(), "Id",
             "PaymentTypeName", vm.Participation?.PaymentTypeId);
-        
+
         if (bu != null && bool.Parse(bu))
             vm.BusinessUser = new BusinessUser();
         else
@@ -38,6 +38,7 @@ public class ParticipationsController : Controller
         if (id == null) return View(vm);
 
         vm.Participation = await _uow.Participation.FirstOrDefaultAsync(id.Value);
+        if (vm.Participation == null) return NotFound();
         if (eventId != null) vm.Participation!.EventId = Guid.Parse(eventId);
         if (bu != null && bool.Parse(bu))
         {
@@ -115,7 +116,7 @@ public class ParticipationsController : Controller
     public async Task<IActionResult> Delete(Guid id)
     {
         var participationObj = await _uow.Participation.FirstOrDefaultAsync(id);
-
+        if (participationObj == null) NotFound();
 
         var vm = new DeleteParticipationVm
         {

@@ -1,6 +1,7 @@
 @model WebApp.Models.Participations.ParticipationCreateEditVm
 <div class="container w-50">
     <form asp-action="CreateEdit">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
         <div class="form-group">
             <label asp-for="IndividualUser!.FirstName" class="control-label"></label>
             <input asp-for="IndividualUser!.FirstName" class="form-control"/>

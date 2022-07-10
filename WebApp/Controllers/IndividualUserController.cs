@@ -14,19 +14,4 @@ public class IndividualUserController : Controller
         _uow = uow;
         _mapper = mapper;
     }
-
-    /*public async Task<IActionResult> CreateEdit(Guid? id)
-    {
-        var vm = new IndividualUserCreateEditViewModel();
-        vm.IndividualUser = new IndividualUser();
-        vm.PaymentTypeSelectList = new SelectList(await _uow.PaymentType.GetAllOrderedAsync(), "Id",
-            "ProductionLineSectionName", vm.IndividualUser.);
-
-        if (id == null) return View(vm);
-
-        vm.WorkRequest = await _bll.WorkRequests.FirstOrDefaultAsync(id.Value);
-        if (vm.WorkRequest == null) return NotFound();
-
-        return View(vm);
-    }*/
 }

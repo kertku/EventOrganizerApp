@@ -6,7 +6,7 @@ public class DateHigherOrEqualToToday : ValidationAttribute
 {
     public override string FormatErrorMessage(string name)
     {
-        return "Date value should be today or future!";
+        return "Ürituse kuupäev ei saa olla minevikus!";
     }
 
     protected override ValidationResult IsValid(object? objValue,

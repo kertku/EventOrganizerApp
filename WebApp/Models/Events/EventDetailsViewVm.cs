@@ -10,8 +10,7 @@ public class EventDetailsViewVm
 {
     public Guid Id { get; set; }
 
-    [DisplayName("Ürituse nimi")] 
-    public string Name { get; set; } = default!;
+    [DisplayName("Ürituse nimi")] public string Name { get; set; } = default!;
 
     [DateHigherOrEqualToToday]
     [DisplayName("Toimumisaeg")]

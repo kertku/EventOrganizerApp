@@ -1,7 +1,5 @@
-﻿using System.Diagnostics;
-using Contracts.DAL.App;
+﻿using Contracts.DAL.App;
 using Microsoft.AspNetCore.Mvc;
-using WebApp.Models;
 
 namespace WebApp.Controllers;
 

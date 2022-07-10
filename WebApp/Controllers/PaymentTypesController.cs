@@ -17,6 +17,7 @@ public class PaymentTypesController : Controller
         _mapper = mapper;
         _uow = uow;
     }
+
     [Route("/admin/PaymentTypes")]
     public async Task<IActionResult> Index()
     {
@@ -30,7 +31,8 @@ public class PaymentTypesController : Controller
         if (id == null) return View(vm);
         vm.Id = (Guid)id;
         var paymentType = await _uow.PaymentType.FirstOrDefaultAsync(id.Value);
-        if (paymentType != null) vm.PaymentTypeName = paymentType.PaymentTypeName;
+        if (paymentType == null) return NotFound();
+        vm.PaymentTypeName = paymentType.PaymentTypeName;
         return View(vm);
     }
 

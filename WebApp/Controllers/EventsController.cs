@@ -60,13 +60,12 @@ public class EventsController : Controller
 
 
     [HttpPost]
-        [ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Delete(DeleteVm vm)
-        {
-            await _uow.Event.RemoveAsync(vm.Id);
-            await _uow.SaveChangesAsync();
-            return RedirectToAction(nameof(Index), "Home");
-        }
-    
+    [ActionName("Delete")]
+    [ValidateAntiForgeryToken]
+    public async Task<IActionResult> Delete(DeleteVm vm)
+    {
+        await _uow.Event.RemoveAsync(vm.Id);
+        await _uow.SaveChangesAsync();
+        return RedirectToAction(nameof(Index), "Home");
+    }
 }
