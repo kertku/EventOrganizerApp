@@ -7,7 +7,7 @@ using WebApp.MapperProfiles;
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddDbContext<AppDbContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("EventOrganizer")));
+    options.UseSqlite("Data Source=database.db"));
 
 /*var connectionString = builder.Configuration.GetConnectionString("MsSQL");
 builder.Services.AddDbContext<AppDbContext>(options =>

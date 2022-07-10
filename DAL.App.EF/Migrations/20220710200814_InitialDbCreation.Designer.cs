@@ -3,7 +3,6 @@ using System;
 using DAL.App.EF;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
-using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
@@ -12,30 +11,26 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DAL.App.EF.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20220708220642_InitialDbCreation")]
+    [Migration("20220710200814_InitialDbCreation")]
     partial class InitialDbCreation
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
-            modelBuilder
-                .HasAnnotation("ProductVersion", "6.0.6")
-                .HasAnnotation("Relational:MaxIdentifierLength", 128);
-
-            SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
+            modelBuilder.HasAnnotation("ProductVersion", "6.0.6");
 
             modelBuilder.Entity("Domain.App.BusinessUser", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("CompanyName")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("TEXT");
 
                     b.Property<int>("RegistryCode")
-                        .HasColumnType("int");
+                        .HasColumnType("INTEGER");
 
                     b.HasKey("Id");
 
@@ -44,25 +39,25 @@ namespace DAL.App.EF.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("83f86ba8-0659-4fb6-a737-023a215c2c9c"),
+                            Id = new Guid("bb039692-33ee-471c-9557-fb6be382ca20"),
                             CompanyName = "Tublitöö As",
                             RegistryCode = 77443382
                         },
                         new
                         {
-                            Id = new Guid("a91fd073-92a9-45a5-b041-9ad00d9b50df"),
+                            Id = new Guid("3d8589e7-611a-41a7-82ee-5f219f3a98b3"),
                             CompanyName = "Kõva Kate OÜ",
                             RegistryCode = 77443382
                         },
                         new
                         {
-                            Id = new Guid("192109a9-9489-4e2c-86b7-21b8c4b8b983"),
+                            Id = new Guid("001fa73d-b8bc-43b9-8eeb-27b9ee620c30"),
                             CompanyName = "Teeme Tööd OÜ",
                             RegistryCode = 77443382
                         },
                         new
                         {
-                            Id = new Guid("b5725183-7434-45bc-aeca-28bbd1689167"),
+                            Id = new Guid("b9489ff2-db80-422c-8efe-e80669995863"),
                             CompanyName = "Testiminse AS",
                             RegistryCode = 77443382
                         });
@@ -72,22 +67,22 @@ namespace DAL.App.EF.Migrations
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("TEXT");
 
                     b.Property<DateTime>("Date")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("Information")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("Location")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("TEXT");
 
                     b.HasKey("Id");
 
@@ -96,7 +91,7 @@ namespace DAL.App.EF.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("f817da15-f2b6-411d-a8c8-90b83db3f8ad"),
+                            Id = new Guid("cb0cb587-cc48-44be-9775-a018950284e8"),
                             Date = new DateTime(2022, 9, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Information = "Osad räägivad, teised kuulavad.",
                             Location = "Ärimajas",
@@ -104,7 +99,7 @@ namespace DAL.App.EF.Migrations
                         },
                         new
                         {
-                            Id = new Guid("15ed81e5-6a38-4716-81ae-ec5cc52f32c0"),
+                            Id = new Guid("df193f93-645b-43bd-ab50-c616783483a7"),
                             Date = new DateTime(2022, 6, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Information = "Osad räägivad, teised kuulavad.",
                             Location = "Linnahall",
@@ -112,7 +107,7 @@ namespace DAL.App.EF.Migrations
                         },
                         new
                         {
-                            Id = new Guid("1c6e7a5a-6937-4399-9d9c-8dc84c0a20ba"),
+                            Id = new Guid("cbd46e44-1ea9-42f7-bd50-5b652ba49333"),
                             Date = new DateTime(2022, 7, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Information = "Saame kokku ja kuulame",
                             Location = "Metsas",
@@ -120,7 +115,7 @@ namespace DAL.App.EF.Migrations
                         },
                         new
                         {
-                            Id = new Guid("e0c7195d-cef5-4851-b8d6-c4cfcbe70c91"),
+                            Id = new Guid("49bce2c5-23ee-43ff-8515-3a0a9e942bca"),
                             Date = new DateTime(2022, 4, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Information = "Tasub kindlasti tulla kõigil.",
                             Location = "Aia 33, Tallinn",
@@ -132,21 +127,21 @@ namespace DAL.App.EF.Migrations
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("FirstName")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("TEXT");
 
                     b.Property<long>("IdentificationCode")
-                        .HasColumnType("bigint");
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("Information")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("LastName")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("TEXT");
 
                     b.HasKey("Id");
 
@@ -155,7 +150,7 @@ namespace DAL.App.EF.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("058a8bde-1688-4e2d-bcfb-a683cfd67377"),
+                            Id = new Guid("35410fb4-d254-4e56-a95c-de9916f7c329"),
                             FirstName = "Kaupe",
                             IdentificationCode = 46611110222L,
                             Information = "tubli",
@@ -163,7 +158,7 @@ namespace DAL.App.EF.Migrations
                         },
                         new
                         {
-                            Id = new Guid("9dcadced-12e5-41fd-8ac2-59a63bef203e"),
+                            Id = new Guid("66c335c4-9e91-4215-bcaf-ffee063b3f90"),
                             FirstName = "Piia",
                             IdentificationCode = 46311110222L,
                             Information = "Infot palju ei ole",
@@ -171,7 +166,7 @@ namespace DAL.App.EF.Migrations
                         },
                         new
                         {
-                            Id = new Guid("53ab12fb-0ac2-432b-b012-e99f923802db"),
+                            Id = new Guid("324cadc2-325f-4e79-8dc4-3498d56a1f85"),
                             FirstName = "Aivar",
                             IdentificationCode = 46411110222L,
                             Information = "test",
@@ -179,7 +174,7 @@ namespace DAL.App.EF.Migrations
                         },
                         new
                         {
-                            Id = new Guid("24460629-1ce8-4652-90aa-b45a36312542"),
+                            Id = new Guid("29f372f1-2b00-4e7a-8c60-f2fc05657f6e"),
                             FirstName = "Kalle",
                             IdentificationCode = 46111110222L,
                             Information = "test",
@@ -191,26 +186,26 @@ namespace DAL.App.EF.Migrations
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("TEXT");
 
                     b.Property<Guid?>("BusinessUserId")
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("TEXT");
 
                     b.Property<Guid>("EventId")
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("TEXT");
 
                     b.Property<Guid?>("IndividualUserId")
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("Information")
                         .HasMaxLength(5000)
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("TEXT");
 
                     b.Property<int?>("NumberOfParticipants")
-                        .HasColumnType("int");
+                        .HasColumnType("INTEGER");
 
                     b.Property<Guid>("PaymentTypeId")
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("TEXT");
 
                     b.HasKey("Id");
 
@@ -229,12 +224,12 @@ namespace DAL.App.EF.Migrations
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("PaymentTypeName")
                         .IsRequired()
                         .HasMaxLength(32)
-                        .HasColumnType("nvarchar(32)");
+                        .HasColumnType("TEXT");
 
                     b.HasKey("Id");
 
@@ -243,12 +238,12 @@ namespace DAL.App.EF.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("46ea1c1a-5467-4ab7-a18f-df6f1ca0b929"),
+                            Id = new Guid("68cd8f67-28fb-4c0f-8313-e85382f9f58c"),
                             PaymentTypeName = "Kaardimakse"
                         },
                         new
                         {
-                            Id = new Guid("12b9e68d-9f54-4512-8693-e8409a40825f"),
+                            Id = new Guid("7b0bc0f9-1ff6-4058-b6fc-92c7e070eb65"),
                             PaymentTypeName = "Sularaha"
                         });
                 });
