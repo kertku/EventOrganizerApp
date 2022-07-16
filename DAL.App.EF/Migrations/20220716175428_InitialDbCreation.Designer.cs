@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DAL.App.EF.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20220710200814_InitialDbCreation")]
+    [Migration("20220716175428_InitialDbCreation")]
     partial class InitialDbCreation
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -39,25 +39,25 @@ namespace DAL.App.EF.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("bb039692-33ee-471c-9557-fb6be382ca20"),
+                            Id = new Guid("93664c13-9749-4010-985c-54eab5632cb4"),
                             CompanyName = "Tublitöö As",
                             RegistryCode = 77443382
                         },
                         new
                         {
-                            Id = new Guid("3d8589e7-611a-41a7-82ee-5f219f3a98b3"),
+                            Id = new Guid("eafe2246-edcf-4126-9625-c76595e3f0a9"),
                             CompanyName = "Kõva Kate OÜ",
                             RegistryCode = 77443382
                         },
                         new
                         {
-                            Id = new Guid("001fa73d-b8bc-43b9-8eeb-27b9ee620c30"),
+                            Id = new Guid("3900405e-86c3-46a7-85e9-d5ec890163de"),
                             CompanyName = "Teeme Tööd OÜ",
                             RegistryCode = 77443382
                         },
                         new
                         {
-                            Id = new Guid("b9489ff2-db80-422c-8efe-e80669995863"),
+                            Id = new Guid("44434bcd-66b8-4aba-86e9-d4efdef97b49"),
                             CompanyName = "Testiminse AS",
                             RegistryCode = 77443382
                         });
@@ -91,7 +91,7 @@ namespace DAL.App.EF.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("cb0cb587-cc48-44be-9775-a018950284e8"),
+                            Id = new Guid("63fa1ff3-fafe-4a91-bac6-c98e16550308"),
                             Date = new DateTime(2022, 9, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Information = "Osad räägivad, teised kuulavad.",
                             Location = "Ärimajas",
@@ -99,7 +99,7 @@ namespace DAL.App.EF.Migrations
                         },
                         new
                         {
-                            Id = new Guid("df193f93-645b-43bd-ab50-c616783483a7"),
+                            Id = new Guid("dac4ddf3-4757-4e44-a3ea-5ffb004f97ae"),
                             Date = new DateTime(2022, 6, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Information = "Osad räägivad, teised kuulavad.",
                             Location = "Linnahall",
@@ -107,7 +107,7 @@ namespace DAL.App.EF.Migrations
                         },
                         new
                         {
-                            Id = new Guid("cbd46e44-1ea9-42f7-bd50-5b652ba49333"),
+                            Id = new Guid("c8a8cc7a-fd48-4e71-943b-7b6d8efcb6ef"),
                             Date = new DateTime(2022, 7, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Information = "Saame kokku ja kuulame",
                             Location = "Metsas",
@@ -115,7 +115,7 @@ namespace DAL.App.EF.Migrations
                         },
                         new
                         {
-                            Id = new Guid("49bce2c5-23ee-43ff-8515-3a0a9e942bca"),
+                            Id = new Guid("366c4a11-f6ee-41d2-974c-8ace37b2b39f"),
                             Date = new DateTime(2022, 4, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Information = "Tasub kindlasti tulla kõigil.",
                             Location = "Aia 33, Tallinn",
@@ -150,7 +150,7 @@ namespace DAL.App.EF.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("35410fb4-d254-4e56-a95c-de9916f7c329"),
+                            Id = new Guid("dc1bf13d-f4e3-4c54-9194-e3928bc31e86"),
                             FirstName = "Kaupe",
                             IdentificationCode = 46611110222L,
                             Information = "tubli",
@@ -158,7 +158,7 @@ namespace DAL.App.EF.Migrations
                         },
                         new
                         {
-                            Id = new Guid("66c335c4-9e91-4215-bcaf-ffee063b3f90"),
+                            Id = new Guid("fea6f7f9-b715-4721-a6ec-c2d8cd6d3393"),
                             FirstName = "Piia",
                             IdentificationCode = 46311110222L,
                             Information = "Infot palju ei ole",
@@ -166,7 +166,7 @@ namespace DAL.App.EF.Migrations
                         },
                         new
                         {
-                            Id = new Guid("324cadc2-325f-4e79-8dc4-3498d56a1f85"),
+                            Id = new Guid("3532f70f-fe35-422d-bc4c-cf2d1746ac49"),
                             FirstName = "Aivar",
                             IdentificationCode = 46411110222L,
                             Information = "test",
@@ -174,7 +174,7 @@ namespace DAL.App.EF.Migrations
                         },
                         new
                         {
-                            Id = new Guid("29f372f1-2b00-4e7a-8c60-f2fc05657f6e"),
+                            Id = new Guid("c044b9e0-9612-4bf9-8eac-9095081267c8"),
                             FirstName = "Kalle",
                             IdentificationCode = 46111110222L,
                             Information = "test",
@@ -238,12 +238,12 @@ namespace DAL.App.EF.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("68cd8f67-28fb-4c0f-8313-e85382f9f58c"),
+                            Id = new Guid("5f8b3608-1e57-4514-856b-a5d8eaacb4fc"),
                             PaymentTypeName = "Kaardimakse"
                         },
                         new
                         {
-                            Id = new Guid("7b0bc0f9-1ff6-4058-b6fc-92c7e070eb65"),
+                            Id = new Guid("fcc520cb-6653-463c-9508-0d0ebbbfcc59"),
                             PaymentTypeName = "Sularaha"
                         });
                 });
@@ -267,7 +267,7 @@ namespace DAL.App.EF.Migrations
                     b.HasOne("Domain.App.PaymentType", "PaymentType")
                         .WithMany("Participations")
                         .HasForeignKey("PaymentTypeId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.Navigation("BusinessUser");

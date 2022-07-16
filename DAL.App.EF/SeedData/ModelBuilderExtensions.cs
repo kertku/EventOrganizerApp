@@ -1,4 +1,3 @@
-using Bogus;
 using Domain.App;
 using Microsoft.EntityFrameworkCore;
 
@@ -14,7 +13,8 @@ public static class ModelBuilderExtensions
         );
 
         modelBuilder.Entity<Event>().HasData(
-            new Event{
+            new Event
+            {
                 Id = Guid.NewGuid(), Date = new DateTime(2022, 9, 15), Name = "Suvine seminar",
                 Information = "Osad räägivad, teised kuulavad.", Location = "Ärimajas"
             },

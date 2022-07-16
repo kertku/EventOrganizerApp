@@ -1,0 +1,10 @@
+@model WebApp.Models.PaymentTypes.CantDeletePaymentTypeErrorPageVm
+
+<div class="container d-flex justify-content-center ">
+    <div class="mt-5">
+        <div class="alert alert-danger mt-8 w-100 " role="alert">
+            Ei saa kustutada maksemeeotodit "@Model.PaymentTypeName", kuna maksemeetod on kasutuses!
+            Kustutamises muuda enne meetotit kasutavad sissekanded!
+        </div>
+    </div>
+</div>

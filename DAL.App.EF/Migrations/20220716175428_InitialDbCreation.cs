@@ -99,79 +99,78 @@ namespace DAL.App.EF.Migrations
                         name: "FK_Participations_PaymentTypes_PaymentTypeId",
                         column: x => x.PaymentTypeId,
                         principalTable: "PaymentTypes",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id");
                 });
 
             migrationBuilder.InsertData(
                 table: "BusinessUsers",
                 columns: new[] { "Id", "CompanyName", "RegistryCode" },
-                values: new object[] { new Guid("001fa73d-b8bc-43b9-8eeb-27b9ee620c30"), "Teeme Tööd OÜ", 77443382 });
+                values: new object[] { new Guid("3900405e-86c3-46a7-85e9-d5ec890163de"), "Teeme Tööd OÜ", 77443382 });
 
             migrationBuilder.InsertData(
                 table: "BusinessUsers",
                 columns: new[] { "Id", "CompanyName", "RegistryCode" },
-                values: new object[] { new Guid("3d8589e7-611a-41a7-82ee-5f219f3a98b3"), "Kõva Kate OÜ", 77443382 });
+                values: new object[] { new Guid("44434bcd-66b8-4aba-86e9-d4efdef97b49"), "Testiminse AS", 77443382 });
 
             migrationBuilder.InsertData(
                 table: "BusinessUsers",
                 columns: new[] { "Id", "CompanyName", "RegistryCode" },
-                values: new object[] { new Guid("b9489ff2-db80-422c-8efe-e80669995863"), "Testiminse AS", 77443382 });
+                values: new object[] { new Guid("93664c13-9749-4010-985c-54eab5632cb4"), "Tublitöö As", 77443382 });
 
             migrationBuilder.InsertData(
                 table: "BusinessUsers",
                 columns: new[] { "Id", "CompanyName", "RegistryCode" },
-                values: new object[] { new Guid("bb039692-33ee-471c-9557-fb6be382ca20"), "Tublitöö As", 77443382 });
+                values: new object[] { new Guid("eafe2246-edcf-4126-9625-c76595e3f0a9"), "Kõva Kate OÜ", 77443382 });
 
             migrationBuilder.InsertData(
                 table: "Events",
                 columns: new[] { "Id", "Date", "Information", "Location", "Name" },
-                values: new object[] { new Guid("49bce2c5-23ee-43ff-8515-3a0a9e942bca"), new DateTime(2022, 4, 20, 0, 0, 0, 0, DateTimeKind.Unspecified), "Tasub kindlasti tulla kõigil.", "Aia 33, Tallinn", "Juhi sünnipäev" });
+                values: new object[] { new Guid("366c4a11-f6ee-41d2-974c-8ace37b2b39f"), new DateTime(2022, 4, 20, 0, 0, 0, 0, DateTimeKind.Unspecified), "Tasub kindlasti tulla kõigil.", "Aia 33, Tallinn", "Juhi sünnipäev" });
 
             migrationBuilder.InsertData(
                 table: "Events",
                 columns: new[] { "Id", "Date", "Information", "Location", "Name" },
-                values: new object[] { new Guid("cb0cb587-cc48-44be-9775-a018950284e8"), new DateTime(2022, 9, 15, 0, 0, 0, 0, DateTimeKind.Unspecified), "Osad räägivad, teised kuulavad.", "Ärimajas", "Suvine seminar" });
+                values: new object[] { new Guid("63fa1ff3-fafe-4a91-bac6-c98e16550308"), new DateTime(2022, 9, 15, 0, 0, 0, 0, DateTimeKind.Unspecified), "Osad räägivad, teised kuulavad.", "Ärimajas", "Suvine seminar" });
 
             migrationBuilder.InsertData(
                 table: "Events",
                 columns: new[] { "Id", "Date", "Information", "Location", "Name" },
-                values: new object[] { new Guid("cbd46e44-1ea9-42f7-bd50-5b652ba49333"), new DateTime(2022, 7, 22, 0, 0, 0, 0, DateTimeKind.Unspecified), "Saame kokku ja kuulame", "Metsas", "Suvepäevad" });
+                values: new object[] { new Guid("c8a8cc7a-fd48-4e71-943b-7b6d8efcb6ef"), new DateTime(2022, 7, 22, 0, 0, 0, 0, DateTimeKind.Unspecified), "Saame kokku ja kuulame", "Metsas", "Suvepäevad" });
 
             migrationBuilder.InsertData(
                 table: "Events",
                 columns: new[] { "Id", "Date", "Information", "Location", "Name" },
-                values: new object[] { new Guid("df193f93-645b-43bd-ab50-c616783483a7"), new DateTime(2022, 6, 13, 0, 0, 0, 0, DateTimeKind.Unspecified), "Osad räägivad, teised kuulavad.", "Linnahall", "Eilene üritus" });
+                values: new object[] { new Guid("dac4ddf3-4757-4e44-a3ea-5ffb004f97ae"), new DateTime(2022, 6, 13, 0, 0, 0, 0, DateTimeKind.Unspecified), "Osad räägivad, teised kuulavad.", "Linnahall", "Eilene üritus" });
 
             migrationBuilder.InsertData(
                 table: "IndividualUsers",
                 columns: new[] { "Id", "FirstName", "IdentificationCode", "Information", "LastName" },
-                values: new object[] { new Guid("29f372f1-2b00-4e7a-8c60-f2fc05657f6e"), "Kalle", 46111110222L, "test", "Sinilill" });
+                values: new object[] { new Guid("3532f70f-fe35-422d-bc4c-cf2d1746ac49"), "Aivar", 46411110222L, "test", "Roos" });
 
             migrationBuilder.InsertData(
                 table: "IndividualUsers",
                 columns: new[] { "Id", "FirstName", "IdentificationCode", "Information", "LastName" },
-                values: new object[] { new Guid("324cadc2-325f-4e79-8dc4-3498d56a1f85"), "Aivar", 46411110222L, "test", "Roos" });
+                values: new object[] { new Guid("c044b9e0-9612-4bf9-8eac-9095081267c8"), "Kalle", 46111110222L, "test", "Sinilill" });
 
             migrationBuilder.InsertData(
                 table: "IndividualUsers",
                 columns: new[] { "Id", "FirstName", "IdentificationCode", "Information", "LastName" },
-                values: new object[] { new Guid("35410fb4-d254-4e56-a95c-de9916f7c329"), "Kaupe", 46611110222L, "tubli", "Kask" });
+                values: new object[] { new Guid("dc1bf13d-f4e3-4c54-9194-e3928bc31e86"), "Kaupe", 46611110222L, "tubli", "Kask" });
 
             migrationBuilder.InsertData(
                 table: "IndividualUsers",
                 columns: new[] { "Id", "FirstName", "IdentificationCode", "Information", "LastName" },
-                values: new object[] { new Guid("66c335c4-9e91-4215-bcaf-ffee063b3f90"), "Piia", 46311110222L, "Infot palju ei ole", "Tulp" });
+                values: new object[] { new Guid("fea6f7f9-b715-4721-a6ec-c2d8cd6d3393"), "Piia", 46311110222L, "Infot palju ei ole", "Tulp" });
 
             migrationBuilder.InsertData(
                 table: "PaymentTypes",
                 columns: new[] { "Id", "PaymentTypeName" },
-                values: new object[] { new Guid("68cd8f67-28fb-4c0f-8313-e85382f9f58c"), "Kaardimakse" });
+                values: new object[] { new Guid("5f8b3608-1e57-4514-856b-a5d8eaacb4fc"), "Kaardimakse" });
 
             migrationBuilder.InsertData(
                 table: "PaymentTypes",
                 columns: new[] { "Id", "PaymentTypeName" },
-                values: new object[] { new Guid("7b0bc0f9-1ff6-4058-b6fc-92c7e070eb65"), "Sularaha" });
+                values: new object[] { new Guid("fcc520cb-6653-463c-9508-0d0ebbbfcc59"), "Sularaha" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Participations_BusinessUserId",

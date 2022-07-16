@@ -1,6 +1,5 @@
 using AutoMapper;
 using DAL.App.DTO;
-using WebApp.Models;
 using WebApp.Models.Events;
 using WebApp.Models.IndividualUsers;
 using WebApp.Models.PaymentTypes;

@@ -1,7 +1,7 @@
 using System.ComponentModel.DataAnnotations;
 using Domain.App.Validators;
 
-namespace WebApp.Models;
+namespace WebApp.Models.Events;
 
 public class EventCreateEditViewModel
 {

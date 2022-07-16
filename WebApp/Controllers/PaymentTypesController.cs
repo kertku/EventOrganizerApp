@@ -75,8 +75,18 @@ public class PaymentTypesController : Controller
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> DeleteConfirmed(Guid id)
     {
-        await _uow.PaymentType.RemoveAsync(id);
-        await _uow.SaveChangesAsync();
-        return RedirectToAction(nameof(Index));
+        try
+        {
+            await _uow.PaymentType.RemoveAsync(id);
+            await _uow.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
+        }
+        catch (Exception ex)
+        {
+            var vm = new CantDeletePaymentTypeErrorPageVm();
+            var paymentTypeObj = await _uow.PaymentType.FirstOrDefaultAsync(id);
+            vm.PaymentTypeName = paymentTypeObj!.PaymentTypeName;
+            return View("CantDeletePaymentTypeErrorPage", vm);
+        }
     }
 }
