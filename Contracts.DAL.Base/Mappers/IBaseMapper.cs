@@ -1,3 +1,4 @@
+#nullable enable
 namespace Contracts.DAL.Base.Mappers;
 
 public interface IBaseMapper<TLeftObject, TRightObject>

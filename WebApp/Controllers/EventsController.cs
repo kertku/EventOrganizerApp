@@ -48,13 +48,14 @@ public class EventsController : Controller
         return View(_mapper.Map<EventDetailsViewVm>(eventWithParticipates));
     }
 
+    //GET
     public async Task<IActionResult> Delete(Guid id)
     {
         var eventObj = await _uow.Event.FirstOrDefaultAsync(id);
         var vm = new DeleteVm();
         if (eventObj != null) vm.EventName = eventObj.Name;
         vm.Id = id;
-
+        if (eventObj != null) vm.Date = eventObj.Date;
         return View(vm);
     }
 

@@ -21,5 +21,10 @@ public class AppDbContext : DbContext
     {
         base.OnModelCreating(modelBuilder);
         modelBuilder.Seed();
+
+        modelBuilder.Entity<PaymentType>()
+            .HasMany(p => p.Participations)
+            .WithOne(pa => pa.PaymentType).
+            HasForeignKey(p => p.PaymentTypeId).OnDelete(DeleteBehavior.NoAction);
     }
 }
