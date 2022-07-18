@@ -26,4 +26,6 @@ public class Event : DomainEntityId<Guid>, IDomainEntityId
 
 
     public ICollection<Participation>? Participations { get; set; }
+    
+    public int ParticipationCount { get; set; }
 }

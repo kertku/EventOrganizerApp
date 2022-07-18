@@ -27,4 +27,5 @@ public class Participation : DomainEntityId<Guid>, IDomainEntityId
     public Guid EventId { get; set; }
 
     [DisplayName("Üritus")] public Event? Event { get; set; }
+    
 }

@@ -7,21 +7,21 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="Bogus" Version="34.0.2"/>
+        <PackageReference Include="Bogus" Version="34.0.2" />
         <PackageReference Include="Bogus.Tools.Analyzer" Version="34.0.2">
             <PrivateAssets>all</PrivateAssets>
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
-        <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.6"/>
-        <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="6.0.6"/>
-        <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.6"/>
+        <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.6" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="6.0.6" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.6" />
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\Contracts.DAL.App\Contracts.DAL.App.csproj"/>
-        <ProjectReference Include="..\DAL.App.DTO\DAL.App.DTO.csproj"/>
-        <ProjectReference Include="..\DAL.Base.EF\DAL.Base.EF.csproj"/>
-        <ProjectReference Include="..\Domain.App\Domain.App.csproj"/>
+        <ProjectReference Include="..\Contracts.DAL.App\Contracts.DAL.App.csproj" />
+        <ProjectReference Include="..\DAL.App.DTO\DAL.App.DTO.csproj" />
+        <ProjectReference Include="..\DAL.Base.EF\DAL.Base.EF.csproj" />
+        <ProjectReference Include="..\Domain.App\Domain.App.csproj" />
     </ItemGroup>
 
 </Project>

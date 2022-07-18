@@ -6,15 +6,15 @@ using WebApp.MapperProfiles;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddDbContext<AppDbContext>(options =>
-    options.UseSqlite("Data Source=database.db"));
+/*builder.Services.AddDbContext<AppDbContext>(options =>
+    options.UseSqlite("Data Source=database.db"));*/
 
-/*var connectionString = builder.Configuration.GetConnectionString("MsSQL");
+var connectionString = builder.Configuration.GetConnectionString("MsSQL");
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlServer(
             connectionString)
         .EnableDetailedErrors()
-        .EnableSensitiveDataLogging());*/
+        .EnableSensitiveDataLogging());
 
 
 builder.Services.AddAutoMapper(

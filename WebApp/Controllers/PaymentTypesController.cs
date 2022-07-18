@@ -60,11 +60,9 @@ public class PaymentTypesController : Controller
         return View(vm);
     }
 
-    public async Task<IActionResult> Delete(Guid? id)
-    {
-        if (id == null) return NotFound();
-        var paymentType = await _uow.PaymentType.FirstOrDefaultAsync(id.Value);
-
+    public async Task<IActionResult> Delete(Guid id) {
+       
+        var paymentType = await _uow.PaymentType.FirstOrDefaultAsync(id);
         if (paymentType == null) return NotFound();
         return View(_mapper.Map<PaymentTypeVm>(paymentType));
     }

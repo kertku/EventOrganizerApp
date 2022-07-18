@@ -1,3 +1,5 @@
+using Bogus;
+using Bogus.Extensions.Norway;
 using Domain.App;
 using Microsoft.EntityFrameworkCore;
 
@@ -34,28 +36,16 @@ public static class ModelBuilderExtensions
                 Information = "Tasub kindlasti tulla kõigil.", Location = "Aia 33, Tallinn"
             }
         );
-        modelBuilder.Entity<IndividualUser>().HasData(
-            new IndividualUser
-            {
-                Id = Guid.NewGuid(), FirstName = "Kaupe", LastName = "Kask", Information = "tubli",
-                IdentificationCode = 46611110222
-            },
-            new IndividualUser
-            {
-                Id = Guid.NewGuid(), FirstName = "Piia", LastName = "Tulp", Information = "Infot palju ei ole",
-                IdentificationCode = 46311110222
-            },
-            new IndividualUser
-            {
-                Id = Guid.NewGuid(), FirstName = "Aivar", LastName = "Roos", Information = "test",
-                IdentificationCode = 46411110222
-            },
-            new IndividualUser
-            {
-                Id = Guid.NewGuid(), FirstName = "Kalle", LastName = "Sinilill", Information = "test",
-                IdentificationCode = 46111110222
-            }
-        );
+        for (int i = 0; i < 100; i++)
+        {
+            modelBuilder.Entity<IndividualUser>().HasData(
+                new Faker<IndividualUser>()
+                    .RuleFor(u => u.Id, g => g.Random.Guid())
+                    .RuleFor(u => u.FirstName, f => f.Name.FirstName())
+                    .RuleFor(u => u.LastName, f => f.Name.LastName())
+                    .RuleFor(u => u.Information, f => f.Lorem.Paragraph())
+                    .RuleFor(u => u.IdentificationCode, f => Int64.Parse(f.Person.Fødselsnummer())));
+        }
 
         modelBuilder.Entity<BusinessUser>().HasData(
             new BusinessUser { Id = Guid.NewGuid(), CompanyName = "Tublitöö As", RegistryCode = 77443382 },
