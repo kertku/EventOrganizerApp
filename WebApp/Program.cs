@@ -1,6 +1,7 @@
 using Contracts.DAL.App;
 using DAL.App.DTO.MapperProfiles;
 using DAL.App.EF;
+using Microsoft.AspNetCore.Mvc.Versioning;
 using Microsoft.EntityFrameworkCore;
 using WebApp.MapperProfiles;
 
@@ -20,6 +21,25 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 builder.Services.AddAutoMapper(
     typeof(AutoMapperProfile),
     typeof(AutoMapperProfiles));
+
+
+builder.Services.AddApiVersioning(o =>
+{
+    o.AssumeDefaultVersionWhenUnspecified = true;
+    o.DefaultApiVersion = new Microsoft.AspNetCore.Mvc.ApiVersion(1, 0);
+    o.ReportApiVersions = true;
+    o.ApiVersionReader = ApiVersionReader.Combine(
+        new QueryStringApiVersionReader("api-version"),
+        new HeaderApiVersionReader("X-Version"),
+        new MediaTypeApiVersionReader("ver"));
+});
+
+builder.Services.AddVersionedApiExplorer(
+    options =>
+    {
+        options.GroupNameFormat = "'v'VVV";
+        options.SubstituteApiVersionInUrl = true;
+    });
 
 
 builder.Services.AddScoped<IAppUnitOfWork, AppUnitOfWork>();

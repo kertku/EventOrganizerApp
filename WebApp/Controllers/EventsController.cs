@@ -45,7 +45,7 @@ public class EventsController : Controller
     public async Task<IActionResult> EventDetails(Guid id)
     {
         var eventWithParticipates = await _uow.Event.GetEventWithParticipatesAsync(id, true);
-        if (eventWithParticipates == null) return NotFound();
+        if (eventWithParticipates is null) return NotFound();
         return View(_mapper.Map<EventDetailsViewVm>(eventWithParticipates));
     }
 
@@ -53,11 +53,13 @@ public class EventsController : Controller
     public async Task<IActionResult> Delete(Guid id)
     {
         var eventObj = await _uow.Event.FirstOrDefaultAsync(id);
-        if (eventObj == null) return NotFound();
-        var vm = new DeleteVm();
-        vm.EventName = eventObj.Name;
-        vm.Id = id;
-        vm.Date = eventObj.Date;
+        if (eventObj is null) return NotFound();
+        var vm = new DeleteVm
+        {
+            EventName = eventObj.Name,
+            Id = id,
+            Date = eventObj.Date
+        };
         return View(vm);
     }
 

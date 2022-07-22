@@ -23,7 +23,17 @@ public class EventRepository : BaseRepository<Event, Domain.App.Event, AppDbCont
         var query = RepoDbSet.AsQueryable();
         if (noTracking) query = query.AsNoTracking();
         var resQuery = query.OrderBy(e => e.Date)
-            .Select(x => Mapper.Map(x));
+            .Select(x => 
+                new Event
+                {
+                    Id = x.Id,
+                    Date = x.Date,
+                    Information = x.Information,
+                    Location = x.Location,
+                    Name = x.Name, 
+                    ParticipationCount = x.Participations.Count()
+
+                });;
         var result = await resQuery.ToListAsync();
         return result!;
     }
@@ -52,6 +62,7 @@ public class EventRepository : BaseRepository<Event, Domain.App.Event, AppDbCont
                 .ThenInclude(b => b.BusinessUser)
             ;
         var result = Mapper.Map(await query.FirstOrDefaultAsync(e => e.Id == id));
+        
         return result!;
     }
 

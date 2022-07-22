@@ -40,7 +40,7 @@
                     <tbody>
                     @foreach (var item in Model)
                     {
-                        @if (item.Date > DateTime.UtcNow)
+                        @if (item.Date >= DateTime.Today)
                         {
                             <tr>
                                 <th scope="row">@futureCounter</th>
@@ -49,6 +49,10 @@
                                 <td>
                                     <a class="text-decoration-none" asp-controller="Events" asp-action="EventDetails" asp-route-id="@item.Id">Osalejad</a>
                                 </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.ParticipationCount)
+                                </td>
+
                                 <td>
                                     <a asp-controller="Events" asp-action="Delete" asp-route-id="@item.Id">
                                         <i class="bi bi-x"></i>
@@ -82,7 +86,7 @@
                     <tbody>
                     @foreach (var item in Model)
                     {
-                        @if (item.Date < DateTime.Now)
+                        @if (item.Date < DateTime.Today)
                         {
                             <tr>
                                 <th scope="row">@pastCounter</th>

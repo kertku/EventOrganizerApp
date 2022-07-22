@@ -10,7 +10,7 @@ public class AutoMapperProfiles : Profile
 {
     public AutoMapperProfiles()
     {
-        CreateMap<Event, Domain.App.Event>().ReverseMap();
+        CreateMap<Domain.App.Event, Event>().ReverseMap();
         CreateMap<EventCreateEditViewModel, Domain.App.Event>().ReverseMap();
         CreateMap<EventCreateEditViewModel, Event>().ReverseMap();
         CreateMap<IndividualUser, IndividualUserViewModel>().ReverseMap();

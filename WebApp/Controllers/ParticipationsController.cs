@@ -116,7 +116,7 @@ public class ParticipationsController : Controller
     public async Task<IActionResult> Delete(Guid id)
     {
         var participationObj = await _uow.Participation.FirstOrDefaultAsync(id);
-        if (participationObj == null) NotFound();
+        if (participationObj is null) NotFound();
 
         var vm = new DeleteParticipationVm
         {
