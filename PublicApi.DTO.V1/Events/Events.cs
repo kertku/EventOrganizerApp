@@ -1,18 +1,12 @@
-using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-using Contracts.Domain.Base;
-using Domain.App.Validators;
-using Domain.Base;
 
-namespace DAL.App.DTO;
+namespace PublicApi.Dto.v1.Events;
 
-public class Event : DomainEntityId<Guid>, IDomainEntityId
+public class Events
 {
     [DisplayName("Ürituse nimi")] public string Name { get; set; } = default!;
 
-    [DateHigherOrEqualToToday]
     [DisplayName("Toimumisaeg")]
     [DataType(DataType.Date)]
     [DisplayFormat(DataFormatString = "{0:dd.MM.yyyy}")]
@@ -24,8 +18,7 @@ public class Event : DomainEntityId<Guid>, IDomainEntityId
     [DisplayName("Informatsioon")]
     public string Information { get; set; } = default!;
 
+    public IEnumerable<string> Participates { get; set; } = default!;
+
     public int ParticipationCount { get; set; }
-
-
-    public ICollection<Participation>? Participations { get; set; }
 }

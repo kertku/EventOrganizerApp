@@ -1,6 +1,7 @@
 using Contracts.DAL.App;
 using DAL.App.DTO.MapperProfiles;
 using DAL.App.EF;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Versioning;
 using Microsoft.EntityFrameworkCore;
 using WebApp.MapperProfiles;
@@ -20,13 +21,14 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 
 builder.Services.AddAutoMapper(
     typeof(AutoMapperProfile),
-    typeof(AutoMapperProfiles));
+    typeof(AutoMapperProfiles),
+    typeof(PublicApi.Dto.v1.MapperProfiles.AutoMapperProfile));
 
 
 builder.Services.AddApiVersioning(o =>
 {
     o.AssumeDefaultVersionWhenUnspecified = true;
-    o.DefaultApiVersion = new Microsoft.AspNetCore.Mvc.ApiVersion(1, 0);
+    o.DefaultApiVersion = new ApiVersion(1, 0);
     o.ReportApiVersions = true;
     o.ApiVersionReader = ApiVersionReader.Combine(
         new QueryStringApiVersionReader("api-version"),
@@ -46,6 +48,8 @@ builder.Services.AddScoped<IAppUnitOfWork, AppUnitOfWork>();
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
+builder.Services.AddSwaggerGen();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -54,6 +58,11 @@ if (!app.Environment.IsDevelopment())
     app.UseExceptionHandler("/Home/Error");
     // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
+}
+else
+{
+    app.UseSwagger();
+    app.UseSwaggerUI();
 }
 
 app.UseHttpsRedirection();

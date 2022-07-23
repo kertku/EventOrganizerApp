@@ -9,13 +9,11 @@ namespace WebApp.Controllers;
 
 public class ParticipationsController : Controller
 {
-    private readonly IMapper _mapper;
     private readonly IAppUnitOfWork _uow;
 
-    public ParticipationsController(IAppUnitOfWork uow, IMapper mapper)
+    public ParticipationsController(IAppUnitOfWork uow)
     {
         _uow = uow;
-        _mapper = mapper;
     }
 
     //GET
@@ -23,9 +21,11 @@ public class ParticipationsController : Controller
         [FromQuery] string? bu)
 
     {
-        var vm = new ParticipationCreateEditVm();
-        vm.Participation = new Participation();
-        vm.IsBusinessUser = bu != null && bool.Parse(bu);
+        var vm = new ParticipationCreateEditVm
+        {
+            Participation = new Participation(),
+            IsBusinessUser = bu != null && bool.Parse(bu)
+        };
         if (eventId != null) vm.EventId = Guid.Parse(eventId);
         vm.PaymentTypeSelectList = new SelectList(await _uow.PaymentType.GetAllOrderedAsync(), "Id",
             "PaymentTypeName", vm.Participation?.PaymentTypeId);
@@ -112,7 +112,9 @@ public class ParticipationsController : Controller
 
         return View(vm);
     }
-
+    
+    
+    [HttpGet]
     public async Task<IActionResult> Delete(Guid id)
     {
         var participationObj = await _uow.Participation.FirstOrDefaultAsync(id);

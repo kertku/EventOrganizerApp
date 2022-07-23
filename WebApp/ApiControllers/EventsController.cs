@@ -1,10 +1,9 @@
 using AutoMapper;
 using Contracts.DAL.App;
-using DAL.App.DTO;
 using Microsoft.AspNetCore.Mvc;
+using PublicApi.Dto.v1.Events;
 
 namespace WebApp.ApiControllers;
-
 
 [ApiController]
 [ApiVersion("1.0")]
@@ -13,18 +12,18 @@ public class EventsController : ControllerBase
 {
     private readonly IMapper _mapper;
     private readonly IAppUnitOfWork _unitOfWork;
-    private readonly ILogger _logger;
 
-    public EventsController(IMapper mapper, IAppUnitOfWork unitOfWork, ILogger logger)
+
+    public EventsController(IMapper mapper, IAppUnitOfWork unitOfWork)
     {
         _mapper = mapper;
         _unitOfWork = unitOfWork;
-        _logger = logger;
     }
-
-    public async Task<IEnumerable<Event>> GetEventsAsync()
+    
+    [HttpGet] 
+    public async Task<IEnumerable<Events>> GetEventsAsync()
     {
         var eventsList = await _unitOfWork.Event.GetAllWithParticipatesAsync(true);
-        return _mapper.Map<IEnumerable<Event>>(eventsList);
+        return  _mapper.Map<IEnumerable<Events>>(eventsList);
     }
 }
