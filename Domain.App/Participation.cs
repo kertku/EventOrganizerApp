@@ -11,7 +11,7 @@ public class Participation : DomainEntityId<Guid>, IDomainEntityId
     [StringLength(5000)]
     public string? Information { get; set; }
 
-    public int? NumberOfParticipants { get; set; }
+    public int NumberOfParticipants { get; set; }
 
     public Guid PaymentTypeId { get; set; }
 

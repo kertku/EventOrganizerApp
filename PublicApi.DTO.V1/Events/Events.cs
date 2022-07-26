@@ -1,9 +1,11 @@
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using Contracts.Domain.Base;
+using Domain.Base;
 
 namespace PublicApi.Dto.v1.Events;
 
-public class Events
+public class Events : DomainEntityId<Guid>, IDomainEntityId
 {
     [DisplayName("Ürituse nimi")] public string Name { get; set; } = default!;
 
@@ -21,4 +23,11 @@ public class Events
     public IEnumerable<string> Participates { get; set; } = default!;
 
     public int ParticipationCount { get; set; }
+}
+
+public class EventsAdd
+{
+    public string Name { get; set; } = default!;
+    public DateTime Date { get; set; }
+    public string Information { get; set; } = default!;
 }

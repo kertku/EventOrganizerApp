@@ -1,4 +1,3 @@
-using AutoMapper;
 using Contracts.DAL.App;
 using DAL.App.DTO;
 using Microsoft.AspNetCore.Mvc;
@@ -70,6 +69,7 @@ public class ParticipationsController : Controller
                 {
                     var user = _uow.IndividualUser.Add(vm.IndividualUser!);
                     vm.Participation.IndividualUserId = user.Id;
+                    vm.Participation.NumberOfParticipants = 1;
                 }
 
                 if (vm.BusinessUser != null && vm.BusinessUser.Id == Guid.Empty)
@@ -112,8 +112,8 @@ public class ParticipationsController : Controller
 
         return View(vm);
     }
-    
-    
+
+
     [HttpGet]
     public async Task<IActionResult> Delete(Guid id)
     {

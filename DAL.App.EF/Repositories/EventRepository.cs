@@ -18,22 +18,42 @@ public class EventRepository : BaseRepository<Event, Domain.App.Event, AppDbCont
         _mapper = mapper;
     }
 
+    public override async Task<Event?> FirstOrDefaultAsync(Guid id, Guid userId, bool noTracking = false)
+    {
+        var query = RepoDbSet.AsQueryable();
+        if (noTracking) query = query.AsNoTracking();
+        var resQuery = await query.Include(p => p.Participations)!
+            .ThenInclude(i => i.IndividualUser)
+            .Include(p => p.Participations)!
+            .ThenInclude(b => b.BusinessUser).FirstOrDefaultAsync(e => e.Id == id);
+
+        var eventObj = _mapper.Map<Event>(resQuery);
+        var participationCount = eventObj.Participations.Sum(i => i.NumberOfParticipants);
+        eventObj.ParticipationCount = participationCount;
+
+        return eventObj;
+    }
+
     public override async Task<IEnumerable<Event>> GetAllOrderedAsync(Guid userId, bool noTracking)
     {
         var query = RepoDbSet.AsQueryable();
         if (noTracking) query = query.AsNoTracking();
-        var resQuery = query.OrderBy(e => e.Date)
-            .Select(x => 
+        var resQuery = query.Include(p => p.Participations)!
+            .ThenInclude(i => i.IndividualUser)
+            .Include(p => p.Participations)!
+            .ThenInclude(b => b.BusinessUser).OrderBy(e => e.Date)
+            .Select(x =>
                 new Event
                 {
                     Id = x.Id,
                     Date = x.Date,
                     Information = x.Information,
                     Location = x.Location,
-                    Name = x.Name, 
-                    ParticipationCount = x.Participations.Count()
-
-                });;
+                    Name = x.Name,
+                    ParticipationCount = x.Participations!.Sum(i => i.NumberOfParticipants),
+                    Participations = _mapper.Map<ICollection<Participation>>(x.Participations)
+                });
+        ;
         var result = await resQuery.ToListAsync();
         return result!;
     }
@@ -62,7 +82,7 @@ public class EventRepository : BaseRepository<Event, Domain.App.Event, AppDbCont
                 .ThenInclude(b => b.BusinessUser)
             ;
         var result = Mapper.Map(await query.FirstOrDefaultAsync(e => e.Id == id));
-        
+
         return result!;
     }
 

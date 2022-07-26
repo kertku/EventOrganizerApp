@@ -10,6 +10,6 @@ public class AutoMapperProfile : Profile
         CreateMap<Event, Events.Events>().ForMember(p => p.Participates,
             opt => opt
                 .MapFrom(p => p.Participations!.Where(i => i.IndividualUser != null)
-                    .Select(n => n.IndividualUser!.FullName)));
+                    .Select(n => n.IndividualUser!.FullName))).ReverseMap();
     }
 }

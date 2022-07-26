@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc.Versioning;
 using Microsoft.EntityFrameworkCore;
 using WebApp.MapperProfiles;
 
+var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
 var builder = WebApplication.CreateBuilder(args);
 
 /*builder.Services.AddDbContext<AppDbContext>(options =>
@@ -17,6 +18,16 @@ builder.Services.AddDbContext<AppDbContext>(options =>
             connectionString)
         .EnableDetailedErrors()
         .EnableSensitiveDataLogging());
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(MyAllowSpecificOrigins,
+        policy =>
+        {
+            policy.WithOrigins("https://localhost:3000/",
+                "http://localhost/");
+        });
+});
 
 
 builder.Services.AddAutoMapper(
@@ -69,6 +80,12 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
+app.UseCors(x => x
+    .AllowAnyMethod()
+    .AllowAnyHeader()
+    .SetIsOriginAllowed(origin => true) // allow any origin
+    .AllowCredentials()); // allow credentials
+
 
 app.UseAuthorization();
 

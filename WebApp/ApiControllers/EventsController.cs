@@ -19,11 +19,21 @@ public class EventsController : ControllerBase
         _mapper = mapper;
         _unitOfWork = unitOfWork;
     }
-    
-    [HttpGet] 
+
+
+    [HttpGet]
     public async Task<IEnumerable<Events>> GetEventsAsync()
     {
-        var eventsList = await _unitOfWork.Event.GetAllWithParticipatesAsync(true);
-        return  _mapper.Map<IEnumerable<Events>>(eventsList);
+        var eventsList = await _unitOfWork.Event.GetAllOrderedAsync();
+        return _mapper.Map<IEnumerable<Events>>(eventsList);
+    }
+
+    [HttpGet("{id}")]
+    [Produces("application/json")]
+    public async Task<ActionResult<Events>> GetEvent(Guid id)
+    {
+        var eventObj = await _unitOfWork.Event.FirstOrDefaultAsync(id);
+        if (eventObj is null) return NotFound();
+        return _mapper.Map<Events>(eventObj);
     }
 }

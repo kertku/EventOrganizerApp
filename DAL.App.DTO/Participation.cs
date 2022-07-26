@@ -12,7 +12,7 @@ public class Participation : DomainEntityId<Guid>, IDomainEntityId
     [StringLength(5000)]
     public string Information { get; set; } = default!;
 
-    [DisplayName("Osalejate arv")] public int? NumberOfParticipants { get; set; }
+    [DisplayName("Osalejate arv")] public int NumberOfParticipants { get; set; }
 
     [DisplayName("Maksetüüp")] public Guid PaymentTypeId { get; set; }
 
@@ -27,5 +27,4 @@ public class Participation : DomainEntityId<Guid>, IDomainEntityId
     public Guid EventId { get; set; }
 
     [DisplayName("Üritus")] public Event? Event { get; set; }
-    
 }
