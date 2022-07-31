@@ -1,5 +1,3 @@
-using System.ComponentModel;
-using System.ComponentModel.DataAnnotations;
 using Contracts.Domain.Base;
 using Domain.Base;
 
@@ -7,8 +5,6 @@ namespace Domain.App;
 
 public class Participation : DomainEntityId<Guid>, IDomainEntityId
 {
-    [DisplayName("Informatsioon")]
-    [StringLength(5000)]
     public string? Information { get; set; }
 
     public int NumberOfParticipants { get; set; }

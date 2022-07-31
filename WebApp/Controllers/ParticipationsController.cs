@@ -25,9 +25,10 @@ public class ParticipationsController : Controller
             Participation = new Participation(),
             IsBusinessUser = bu != null && bool.Parse(bu)
         };
-        if (eventId != null) vm.EventId = Guid.Parse(eventId);
         vm.PaymentTypeSelectList = new SelectList(await _uow.PaymentType.GetAllOrderedAsync(), "Id",
-            "PaymentTypeName", vm.Participation?.PaymentTypeId);
+            "PaymentTypeName");
+        if (eventId != null) vm.EventId = Guid.Parse(eventId);
+
 
         if (bu != null && bool.Parse(bu))
             vm.BusinessUser = new BusinessUser();
@@ -107,8 +108,9 @@ public class ParticipationsController : Controller
         }
 
         vm.PaymentTypeSelectList = new SelectList(await _uow.PaymentType.GetAllOrderedAsync(), "Id",
-            "PaymentType",
+            "PaymentTypeName",
             vm.Participation!.PaymentTypeId);
+
 
         return View(vm);
     }

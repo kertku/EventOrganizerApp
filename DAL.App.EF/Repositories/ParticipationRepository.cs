@@ -19,8 +19,8 @@ public class ParticipationRepository : BaseRepository<Participation, Domain.App.
     }
 
 
-    public override async Task<Participation?> FirstOrDefaultAsync(Guid id, Guid userId = default,
-        bool noTracking = true)
+    public override async Task<Participation?> FirstOrDefaultAsync(Guid id, Guid userId,
+        bool noTracking = false)
     {
         var query = RepoDbSet.AsQueryable();
         if (noTracking) query = query.AsNoTracking();

@@ -25,9 +25,10 @@ public class Events : DomainEntityId<Guid>, IDomainEntityId
     public int ParticipationCount { get; set; }
 }
 
-public class EventsAdd
+public class EventPost : DomainEntityId<Guid>, IDomainEntityId
 {
     public string Name { get; set; } = default!;
     public DateTime Date { get; set; }
     public string Information { get; set; } = default!;
+    public string Location { get; set; } = default!;
 }

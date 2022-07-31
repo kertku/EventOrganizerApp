@@ -31,6 +31,7 @@
         </div>
         <input type="hidden" asp-for="EventId"/>
         <input type="hidden" asp-for="Participation!.Id"/>
+
         @if (Model.Participation!.Id != Guid.Empty)
         {
             <div class="form-group">

@@ -28,13 +28,17 @@ public class EventRepository : BaseRepository<Event, Domain.App.Event, AppDbCont
             .ThenInclude(b => b.BusinessUser).FirstOrDefaultAsync(e => e.Id == id);
 
         var eventObj = _mapper.Map<Event>(resQuery);
-        var participationCount = eventObj.Participations.Sum(i => i.NumberOfParticipants);
-        eventObj.ParticipationCount = participationCount;
+        if (eventObj.Participations.Any())
+        {
+            var participationCount = eventObj.Participations.Sum(i => i.NumberOfParticipants);
+            eventObj.ParticipationCount = participationCount;
+        }
+
 
         return eventObj;
     }
 
-    public override async Task<IEnumerable<Event>> GetAllOrderedAsync(Guid userId, bool noTracking)
+    public override async Task<IEnumerable<Event>> GetAllOrderedAsync(Guid userId = default, bool noTracking = true)
     {
         var query = RepoDbSet.AsQueryable();
         if (noTracking) query = query.AsNoTracking();
@@ -53,7 +57,6 @@ public class EventRepository : BaseRepository<Event, Domain.App.Event, AppDbCont
                     ParticipationCount = x.Participations!.Sum(i => i.NumberOfParticipants),
                     Participations = _mapper.Map<ICollection<Participation>>(x.Participations)
                 });
-        ;
         var result = await resQuery.ToListAsync();
         return result!;
     }

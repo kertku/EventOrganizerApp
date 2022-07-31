@@ -1,5 +1,6 @@
 using AutoMapper;
 using Contracts.DAL.App;
+using DAL.App.DTO;
 using Microsoft.AspNetCore.Mvc;
 using PublicApi.Dto.v1.Events;
 
@@ -35,5 +36,24 @@ public class EventsController : ControllerBase
         var eventObj = await _unitOfWork.Event.FirstOrDefaultAsync(id);
         if (eventObj is null) return NotFound();
         return _mapper.Map<Events>(eventObj);
+    }
+
+    // POST: api/Event
+    [HttpPost]
+    [Consumes("application/json")]
+    [Produces("application/json")]
+    [ProducesResponseType(typeof(EventPost), StatusCodes.Status200OK)]
+    public async Task<ActionResult<EventPost>> PostEvent(EventPost eventObj)
+    {
+        var addEvent = _unitOfWork.Event.Add(_mapper.Map<Event>(eventObj));
+        await _unitOfWork.SaveChangesAsync();
+
+        var returnEvent = _mapper.Map<Events>(addEvent);
+
+        return CreatedAtAction("GetEvent", new
+        {
+            id = addEvent.Id,
+            version = HttpContext.GetRequestedApiVersion()?.ToString() ?? "0"
+        }, returnEvent);
     }
 }
