@@ -1,5 +1,5 @@
 using System.ComponentModel.DataAnnotations;
-using Domain.App.Validators;
+using Valitators.Base.Validators;
 
 namespace WebApp.Models.Events;
 

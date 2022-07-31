@@ -5,8 +5,8 @@ using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Contracts.Domain.Base;
-using Domain.App.Validators;
 using Domain.Base;
+using Valitators.Base.Validators;
 
 namespace DAL.App.DTO;
 
@@ -23,7 +23,7 @@ public class IndividualUser : DomainEntityId<Guid>, IDomainEntityId
     [DisplayName("Isikukood")]
     [RegularExpression(@"^[1-6]{1}[0-9]{2}(0[1-9]|1[0-2])(0[1-9]|[1-2][0-9]|3[0-1])[0-9]{4}$",
         ErrorMessage = "Isikukood ei vasta nõuetele!")]
-    [IdentityCodeValidator]
+    [EstoniaIdentityCodeValidator]
     public long IdentificationCode { get; set; }
 
     [StringLength(1500)] public string Information { get; set; } = " ";

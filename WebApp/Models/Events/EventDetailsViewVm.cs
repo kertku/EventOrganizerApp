@@ -1,8 +1,8 @@
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using DAL.App.DTO;
-using Domain.App.Validators;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Valitators.Base.Validators;
 
 namespace WebApp.Models.Events;
 
