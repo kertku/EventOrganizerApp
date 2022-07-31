@@ -32,7 +32,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Contracts.DAL.App", "Contra
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PublicApi.DTO.V1", "PublicApi.DTO.V1\PublicApi.DTO.V1.csproj", "{873A4331-A404-4AB7-809A-4F8C240D14AF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Valitators.Base", "Valitators.Base\Valitators.Base.csproj", "{EE3C1A82-A738-4A7A-AB7B-22E5E1B3D1AD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Validators.Base", "Validators.Base\Validators.Base.csproj", "{EE3C1A82-A738-4A7A-AB7B-22E5E1B3D1AD}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{4FFD178C-5B49-45E2-8C9A-20395C830751}"
 EndProject

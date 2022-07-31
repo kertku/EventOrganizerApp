@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace Valitators.Base.Validators;
+namespace Validators.Base.Validators;
 
 public class EstoniaIdentityCodeValidator : ValidationAttribute
 {
@@ -9,7 +9,7 @@ public class EstoniaIdentityCodeValidator : ValidationAttribute
         return $"Isikukood  {name} ei vasta Eesti isikukoodi nõuetele!";
     }
 
-    private long[] GetIntArray(long num)
+    private static long[] GetIntArray(long num)
     {
         var listOfInts = new List<long>();
         while (num > 0)

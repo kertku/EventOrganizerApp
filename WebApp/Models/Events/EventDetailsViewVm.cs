@@ -2,7 +2,7 @@ using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using DAL.App.DTO;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using Valitators.Base.Validators;
+using Validators.Base.Validators;
 
 namespace WebApp.Models.Events;
 

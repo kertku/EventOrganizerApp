@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace Valitators.Base.Validators;
+namespace Validators.Base.Validators;
 
 public class DateHigherOrEqualToToday : ValidationAttribute
 {

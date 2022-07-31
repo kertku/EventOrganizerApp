@@ -6,7 +6,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Contracts.Domain.Base;
 using Domain.Base;
-using Valitators.Base.Validators;
+using Validators.Base.Validators;
 
 namespace DAL.App.DTO;
 
